@@ -1,19 +1,30 @@
 package de.fh_muenster.buecherwelt;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.content.Intent;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    TextView mainTextView;
+    //Button mainButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mainTextView = (TextView) findViewById(R.id.textView);
+        mainTextView.setText("Bücherwelt");
+
+        //mainButton = (Button) findViewById(R.id.button);
+        //mainButton.setOnClickListener(this);
     }
 
 
@@ -40,13 +51,20 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void login(View view){
-        Intent intent = new Intent(this, Display2Activity);
+        Intent intent = new Intent(this, KundeneinsichtActivity.class);
         EditText userName = (EditText)findViewById(R.id.editText);
         EditText password = (EditText)findViewById(R.id.editText2);
         String userName1 = userName.getText().toString();
         String password1 = password.getText().toString();
-        if(userName1=="Julian" && password1=="hallo") {
-          startActivity(intent);
-        }
+        /*if(userName1=="Julian" && password1=="hallo") {
+
+        }*/
+         startActivity(intent);
     }
+
+    //@Override
+    /*public void onClick(View v) {
+        //mainTextView.setText("Button clicked!");
+        //login(v);
+    }*/
 }

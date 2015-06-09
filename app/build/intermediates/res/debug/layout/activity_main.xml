@@ -9,18 +9,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Bücherwelt"
+        android:text="@string/Bücherwelt"
         android:id="@+id/textView"
         android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/Login"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="Login" />
+        android:onClick="login" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,6 +41,24 @@
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="98dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Benutzername"
+        android:id="@+id/textView31"
+        android:layout_above="@+id/editText2"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/Passwort"
+        android:id="@+id/textView32"
+        android:layout_above="@+id/editText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
 <!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_main.xml -->

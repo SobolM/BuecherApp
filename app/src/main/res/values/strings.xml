@@ -11,4 +11,14 @@
     <string name="title_activity_kunden_ueberblick">KundenUeberblickActivity</string>
     <string name="title_activity_buch">BuchActivity</string>
     <string name="title_activity_neues_buch">NeuesBuchActivity</string>
+    <string name="title_activity_kundeneinsicht">KundeneinsichtActivity</string>
+    <string name="Bücherwelt">Bücherwelt</string>
+    <string name="Login">Login</string>
+    <string name="Logout">Logout</string>
+    <string name="Benutzername">Benutzername</string>
+    <string name="Passwort">Passwort</string>
+    <string name="Benutzerdaten_ändern">Benutzerdaten ändern</string>
+    <string name="Einsehen">Leihliste einsehen</string>
+    <string name="Button_Login">Login</string>
+    <string name="Willkommen">Willkommen!</string>
 </resources>
