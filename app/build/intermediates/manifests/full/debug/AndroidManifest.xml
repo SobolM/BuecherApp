@@ -60,6 +60,14 @@
             android:name="de.fh_muenster.buecherwelt.KundeneinsichtActivity"
             android:label="@string/title_activity_kundeneinsicht" >
         </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.Mitarbeiter_activity"
+            android:label="@string/title_activity_mitarbeiter_activity" >
+        </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.Mitarbeiter_bearbeiten"
+            android:label="@string/title_activity_mitarbeiter_bearbeiten" >
+        </activity>
     </application>
 
 </manifest>

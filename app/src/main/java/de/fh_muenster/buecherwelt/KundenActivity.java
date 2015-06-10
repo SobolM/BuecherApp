@@ -1,9 +1,11 @@
 package de.fh_muenster.buecherwelt;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class KundenActivity extends ActionBarActivity {
@@ -36,4 +38,11 @@ public class KundenActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void neuerKunde(View v){
+        Intent intent = new Intent(this, NeuerKundeActivity.class);
+        startActivity(intent);
+    }
+
+
 }

@@ -52,14 +52,24 @@ public class MainActivity extends ActionBarActivity {
 
     public void login(View view){
         Intent intent = new Intent(this, KundeneinsichtActivity.class);
-        EditText userName = (EditText)findViewById(R.id.editText);
-        EditText password = (EditText)findViewById(R.id.editText2);
+        EditText userName = (EditText)findViewById(R.id.editText2);
+        EditText password = (EditText)findViewById(R.id.editText);
         String userName1 = userName.getText().toString();
         String password1 = password.getText().toString();
-        /*if(userName1=="Julian" && password1=="hallo") {
+        String Name = "Julian";
+        String Password = "hallo";
+        if(userName1.equals(Name) && password1.equals(Password)) {
+            startActivity(intent);
+        }
+        if(userName1.equals("Mitarbeiter") && password1.equals("m")){
+            Intent intent2 = new Intent(this, Mitarbeiter_activity.class);
+            startActivity(intent2);
 
-        }*/
-         startActivity(intent);
+        }
+
+
+
+
     }
 
     //@Override

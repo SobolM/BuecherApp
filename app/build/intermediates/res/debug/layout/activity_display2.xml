@@ -34,5 +34,33 @@
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:id="@+id/button14"
+        android:layout_alignParentBottom="true"
+        android:onClick="zurück"
+        android:layout_toLeftOf="@+id/textView4"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/textView3"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:layout_above="@+id/button14"
+        android:id="@+id/tableLayout"></TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/textView3"
+        android:layout_toEndOf="@+id/tableLayout"
+        android:id="@+id/tableLayout2"
+        android:layout_toRightOf="@+id/tableLayout"></TableLayout>
 </RelativeLayout>
 <!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_display2.xml -->

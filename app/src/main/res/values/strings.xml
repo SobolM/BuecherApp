@@ -21,4 +21,20 @@
     <string name="Einsehen">Leihliste einsehen</string>
     <string name="Button_Login">Login</string>
     <string name="Willkommen">Willkommen!</string>
+    <string name="back">Zurück</string>
+    <string name="NewCustomer">Neuer Kunde</string>
+    <string name="Customer">Kunden:</string>
+    <string name="Employee">Mitarbeiter</string>
+    <string name="Books">Bücher</string>
+    <string name="title_activity_mitarbeiter_activity">Mitarbeiter_activity</string>
+    <string name="title_activity_mitarbeiter_bearbeiten">Mitarbeiter_bearbeiten</string>
+    <string name="speichern">Speichern</string>
+    <string name="NewE">Neuer Mitarbeiter</string>
+    <string name="FristName">Vorname</string>
+    <string name="LastName">Nachname</string>
+    <string name="Address">Straße+Hausnr.</string>
+    <string name="Hnr">Hausnummer</string>
+    <string name="PLZ">PLZ</string>
+    <string name="Ort">Ort</string>
+    <string name="C">Kunden</string>
 </resources>
