@@ -1,17 +1,32 @@
 package de.fh_muenster.buecherwelt;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 public class KundenUeberblickActivity extends ActionBarActivity {
 
+    ListView mainListView;
+    ArrayAdapter myArrayAdapter;
+    ArrayList myBookList = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kunden_ueberblick);
+
+        mainListView = (ListView) findViewById(R.id.listView);
+        myArrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1);
+        mainListView.setAdapter(myArrayAdapter);
+
+        myBookList.add("Harry Potter");
+        myArrayAdapter.notifyDataSetChanged();
     }
 
 
@@ -35,5 +50,9 @@ public class KundenUeberblickActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void listeErstellen(View v){
+
     }
 }

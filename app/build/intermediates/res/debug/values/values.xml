@@ -146,12 +146,16 @@
     <!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Address">Straße+Hausnr.</string>
+    <string name="Ausleihen">Ausgeliehne Bücher:</string>
     <string name="Benutzerdaten_ändern">Benutzerdaten ändern</string>
     <string name="Benutzername">Benutzername</string>
     <string name="Books">Bücher</string>
+    <string name="Bplus">Buch hinzufügen</string>
     <string name="Button_Login">Login</string>
     <string name="Bücherwelt">Bücherwelt</string>
     <string name="C">Kunden</string>
+    <string name="C_edit">Kunde bearbeiten</string>
+    <string name="C_seit">Kunde seit:</string>
     <string name="Customer">Kunden:</string>
     <string name="Einsehen">Leihliste einsehen</string>
     <string name="Employee">Mitarbeiter</string>
@@ -189,6 +193,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Buecherwelt</string>
     <string name="back">Zurück</string>
+    <string name="fällig">Fällig am:</string>
     <string name="hello_world">Hello world!</string>
     <string name="speichern">Speichern</string>
     <string name="title_activity_ausgw_buch_activiy">AusgwBuchActiviy</string>

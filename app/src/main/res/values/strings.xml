@@ -37,4 +37,9 @@
     <string name="PLZ">PLZ</string>
     <string name="Ort">Ort</string>
     <string name="C">Kunden</string>
+    <string name="C_seit">Kunde seit:</string>
+    <string name="Ausleihen">Ausgeliehne Bücher:</string>
+    <string name="fällig">Fällig am:</string>
+    <string name="C_edit">Kunde bearbeiten</string>
+    <string name="Bplus">Buch hinzufügen</string>
 </resources>
