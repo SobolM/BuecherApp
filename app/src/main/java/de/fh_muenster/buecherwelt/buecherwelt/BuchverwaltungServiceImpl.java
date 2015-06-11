@@ -9,12 +9,15 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.Date;
 import java.util.List;
+
+import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 /**
  * Created by user on 11.06.15.
  */
-public class BuchverwaltungServiceImpl {
+public class BuchverwaltungServiceImpl implements BuchverwaltungService{
 
     /**
      * Namespace is the targetNamespace in the WSDL.
@@ -35,6 +38,25 @@ public class BuchverwaltungServiceImpl {
 
 
 
+    @Override
+    public void neuesBuchHinzufuegen(int id, String titel, String autor, Date erscheinungsjahr, int anzahl) throws NoSessionException {
+        Buch result = null;
+        String METHOD_NAME = "neuesBuchHinzufuegen";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME, id, titel, autor, erscheinungsjahr, anzahl);
+            Log.d(TAG, response.toString());
+            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+            if (sessionId != 0) {
+                result = new Buch(id, titel, autor, erscheinungsjahr, anzahl);
+            }
+            else {
+                throw new NoSessionException("Please Login!");
+            }
+        } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+    }
 
 
 

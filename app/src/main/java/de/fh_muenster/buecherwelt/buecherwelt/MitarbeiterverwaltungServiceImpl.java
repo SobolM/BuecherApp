@@ -22,7 +22,7 @@ import static android.support.v4.app.ActivityCompat.startActivity;
 /**
  * Created by user on 11.06.15.
  */
-public class MitarbeiterverwaltungServiceImpl {
+public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungService{
 
     /**
      * Namespace is the targetNamespace in the WSDL.
@@ -41,7 +41,7 @@ public class MitarbeiterverwaltungServiceImpl {
      */
     private int sessionId;
 
-    //@Override
+    @Override
     public void login(String benutzername, String passwort) throws InvalidLoginException {
 
         String METHOD_NAME = "login";
@@ -61,7 +61,7 @@ public class MitarbeiterverwaltungServiceImpl {
         }
     }
 
-    //@Override
+    @Override
     public void neuenMitarbeiterHinzufuegen(int id, String vorname, String nachname, String plz, String ort, String strasse, int hausnummer, String email, String benutzername, String passwort) throws NoSessionException {
         Mitarbeiter result = null;
         String METHOD_NAME = "neuenMitarbeiterHinzufuegen";
@@ -83,11 +83,7 @@ public class MitarbeiterverwaltungServiceImpl {
     }
 
 
-
-
-
-
-    //@Override
+    @Override
     public void logout() throws NoSessionException {
         Log.d(TAG,"logout called.");
         String METHOD_NAME = "logout";

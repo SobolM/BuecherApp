@@ -16,7 +16,7 @@ import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 /**
  * Created by user on 11.06.15.
  */
-public class KundenverwaltungServiceImpl {
+public class KundenverwaltungServiceImpl implements KundenverwaltungService{
 
     /**
      * Namespace is the targetNamespace in the WSDL.
@@ -38,7 +38,7 @@ public class KundenverwaltungServiceImpl {
 
 
 
-    //@Override
+    @Override
     public void logout() throws NoSessionException {
         Log.d(TAG,"logout called.");
         String METHOD_NAME = "logout";
@@ -51,7 +51,7 @@ public class KundenverwaltungServiceImpl {
         }
     }
 
-    //@Override
+    @Override
     public void kundeHinzufuegen(int id, String vorname, String nachname, String plz, String ort, String strasse, int hausnummer, String email, String benutzername, String passwort) throws NoSessionException {
         Kunde result = null;
         String METHOD_NAME = "kundeHinzufuegen";
