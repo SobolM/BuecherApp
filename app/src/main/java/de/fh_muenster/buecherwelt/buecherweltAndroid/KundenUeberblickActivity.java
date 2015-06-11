@@ -1,4 +1,4 @@
-package de.fh_muenster.buecherwelt;
+package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import de.fh_muenster.buecherwelt.R;
 
 
 public class KundenUeberblickActivity extends ActionBarActivity {

@@ -1,24 +1,28 @@
-package de.fh_muenster.buecherwelt;
+package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import de.fh_muenster.buecherwelt.R;
 
 
-public class AusgwBuchActiviy extends ActionBarActivity {
+public class VerwaltungActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ausgw_buch_activiy);
+        setContentView(R.layout.activity_verwaltung);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ausgw_buch_activiy, menu);
+        getMenuInflater().inflate(R.menu.menu_verwaltung, menu);
         return true;
     }
 
@@ -35,5 +39,21 @@ public class AusgwBuchActiviy extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void kunden(View v) {
+    Intent intent = new Intent(this, KundenUeberblickActivity.class);
+       startActivity(intent);
+
+    }
+
+    public void bücher(View v){
+        Intent intent = new Intent(this, BuchActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void mitarbeiter(View v){
+
     }
 }

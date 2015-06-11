@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".buecherweltAndroid.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,47 +19,47 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Display2Activity"
+            android:name=".buecherweltAndroid.Display2Activity"
             android:label="@string/title_activity_display2" >
         </activity>
         <activity
-            android:name=".AusgwBuchActiviy"
+            android:name=".buecherweltAndroid.AusgwBuchActiviy"
             android:label="@string/title_activity_ausgw_buch_activiy" >
         </activity>
         <activity
-            android:name=".VerwaltungActivity"
+            android:name=".buecherweltAndroid.VerwaltungActivity"
             android:label="@string/title_activity_verwaltung" >
         </activity>
         <activity
-            android:name=".KundenActivity"
+            android:name=".buecherweltAndroid.KundenActivity"
             android:label="@string/title_activity_kunden" >
         </activity>
         <activity
-            android:name=".NeuerKundeActivity"
+            android:name=".buecherweltAndroid.NeuerKundeActivity"
             android:label="@string/title_activity_neuer_kunde" >
         </activity>
         <activity
-            android:name=".KundenUeberblickActivity"
+            android:name=".buecherweltAndroid.KundenUeberblickActivity"
             android:label="@string/title_activity_kunden_ueberblick" >
         </activity>
         <activity
-            android:name=".BuchActivity"
+            android:name=".buecherweltAndroid.BuchActivity"
             android:label="@string/title_activity_buch" >
         </activity>
         <activity
-            android:name=".NeuesBuchActivity"
+            android:name=".buecherweltAndroid.NeuesBuchActivity"
             android:label="@string/title_activity_neues_buch" >
         </activity>
         <activity
-            android:name=".KundeneinsichtActivity"
+            android:name=".buecherweltAndroid.KundeneinsichtActivity"
             android:label="@string/title_activity_kundeneinsicht" >
         </activity>
         <activity
-            android:name=".Mitarbeiter_activity"
+            android:name=".buecherweltAndroid.Mitarbeiter_activity"
             android:label="@string/title_activity_mitarbeiter_activity" >
         </activity>
         <activity
-            android:name=".Mitarbeiter_bearbeiten"
+            android:name=".buecherweltAndroid.Mitarbeiter_bearbeiten"
             android:label="@string/title_activity_mitarbeiter_bearbeiten" >
         </activity>
     </application>

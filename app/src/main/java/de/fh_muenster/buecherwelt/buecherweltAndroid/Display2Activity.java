@@ -1,26 +1,22 @@
-package de.fh_muenster.buecherwelt;
+package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+import android.view.View;
+
+import de.fh_muenster.buecherwelt.R;
 
 
-public class NeuerKundeActivity extends ActionBarActivity {
+public class Display2Activity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_neuer_kunde);
+        setContentView(R.layout.activity_display2);
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_neuer_kunde, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -36,4 +32,16 @@ public class NeuerKundeActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void zurück(View v){
+        Intent intent = new Intent(this, KundeneinsichtActivity.class);
+        startActivity(intent);
+    }
+
+    public void Logout(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
+
