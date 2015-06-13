@@ -42,4 +42,5 @@
     <string name="fällig">Fällig am:</string>
     <string name="C_edit">Kunde bearbeiten</string>
     <string name="Bplus">Buch hinzufügen</string>
+    <string name="title_activity_m_mitarbeiter_liste">m_mitarbeiterListe</string>
 </resources>

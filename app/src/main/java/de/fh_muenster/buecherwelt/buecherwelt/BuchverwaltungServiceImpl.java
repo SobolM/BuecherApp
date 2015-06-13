@@ -6,6 +6,7 @@ import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -39,7 +40,7 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
 
 
     @Override
-    public void neuesBuchHinzufuegen(int id, String titel, String autor, Date erscheinungsjahr, int anzahl) throws NoSessionException {
+    public void neuesBuchHinzufuegen(int id, String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException {
         Buch result = null;
         String METHOD_NAME = "neuesBuchHinzufuegen";
         SoapObject response = null;
@@ -49,6 +50,33 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
             this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
             if (sessionId != 0) {
                 result = new Buch(id, titel, autor, erscheinungsjahr, anzahl);
+            }
+            else {
+                throw new NoSessionException("Please Login!");
+            }
+        } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Buch getBuchMitIdEins() throws NoSessionException {
+        Buch result = null;
+        String METHOD_NAME = "getBuchMitIdEins";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME, sessionId);
+            Log.d(TAG, response.toString());
+            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+            if (sessionId != 0) {
+                SoapObject soapBuchEntry = (SoapObject) response.getProperty(1);
+                SoapPrimitive soapBuchId = (SoapPrimitive) soapBuchEntry.getProperty("id");
+                SoapPrimitive soapBuchTitel = (SoapPrimitive) soapBuchEntry.getProperty("titel");
+                SoapPrimitive soapBuchAutor = (SoapPrimitive) soapBuchEntry.getProperty("autor");
+                SoapPrimitive soapBuchErscheinungsjahr = (SoapPrimitive) soapBuchEntry.getProperty("erscheinungsjahr");
+                SoapPrimitive soapBuchAnzahl = (SoapPrimitive) soapBuchEntry.getProperty("anzahl");
+                result = new Buch(Integer.valueOf(soapBuchId.toString()), String.valueOf(soapBuchTitel), String.valueOf(soapBuchAutor), Integer.valueOf(soapBuchErscheinungsjahr.toString()), Integer.valueOf(soapBuchAnzahl.toString()));
+                return result;
             }
             else {
                 throw new NoSessionException("Please Login!");

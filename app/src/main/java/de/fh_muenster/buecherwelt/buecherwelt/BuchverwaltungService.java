@@ -9,5 +9,7 @@ import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
  */
 public interface BuchverwaltungService {
 
-    public void neuesBuchHinzufuegen(int id, String titel, String autor, Date erscheinungsjahr, int anzahl) throws NoSessionException;
+    public void neuesBuchHinzufuegen(int id, String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException;
+
+    public Buch getBuchMitIdEins() throws NoSessionException;
 }

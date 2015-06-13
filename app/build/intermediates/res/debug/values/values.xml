@@ -202,6 +202,7 @@
     <string name="title_activity_kunden">KundenActivity</string>
     <string name="title_activity_kunden_ueberblick">KundenUeberblickActivity</string>
     <string name="title_activity_kundeneinsicht">KundeneinsichtActivity</string>
+    <string name="title_activity_m_mitarbeiter_liste">m_mitarbeiterListe</string>
     <string name="title_activity_mitarbeiter_activity">Mitarbeiter_activity</string>
     <string name="title_activity_mitarbeiter_bearbeiten">Mitarbeiter_bearbeiten</string>
     <string name="title_activity_neuer_kunde">NeuerKundeActivity</string>

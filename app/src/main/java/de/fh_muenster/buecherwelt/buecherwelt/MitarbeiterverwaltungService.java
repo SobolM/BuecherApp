@@ -1,5 +1,7 @@
 package de.fh_muenster.buecherwelt.buecherwelt;
 
+import java.util.List;
+
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
@@ -13,4 +15,6 @@ public interface MitarbeiterverwaltungService {
     public void neuenMitarbeiterHinzufuegen(int id, String vorname, String nachname, String plz, String ort, String strasse, int hausnummer, String email, String benutzername, String passwort) throws NoSessionException;
 
     public void logout() throws NoSessionException;
+
+    public List<Mitarbeiter> getAllMitarbeiter() throws NoSessionException;
 }

@@ -52,7 +52,7 @@ public class Mitarbeiter_activity extends ActionBarActivity {
     }
 
     public void mitarbeiter(View v){
-        Intent intent = new Intent(this, Mitarbeiter_bearbeiten.class);
+        Intent intent = new Intent(this, m_mitarbeiterListe.class);
         startActivity(intent);
 
     }

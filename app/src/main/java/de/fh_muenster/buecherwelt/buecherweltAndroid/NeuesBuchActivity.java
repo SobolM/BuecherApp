@@ -4,8 +4,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import de.fh_muenster.buecherwelt.R;
+import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 
 
 public class NeuesBuchActivity extends ActionBarActivity {
@@ -14,6 +17,21 @@ public class NeuesBuchActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neues_buch);
+
+        final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+
+        //UserName-TextView holen und Usernamen setzen
+        //Es muss kein Aufruf zum Server erfolgen, da das Customer-Objekt bereits beim Login geladen wurde.
+        EditText id = (EditText) findViewById(R.id.editText17);
+        id.setText(myApp.getBuch().getTitel());
+        EditText titel = (EditText) findViewById(R.id.editText8);
+        titel.setText(myApp.getBuch().getTitel().toString());
+        EditText autor = (EditText) findViewById(R.id.editText9);
+        autor.setText(myApp.getBuch().getTitel());
+        EditText jahr = (EditText) findViewById(R.id.editText16);
+        jahr.setText(myApp.getBuch().getTitel().toString());
+        EditText anzahl = (EditText) findViewById(R.id.editText10);
+        anzahl.setText(myApp.getBuch().getTitel());
     }
 
 

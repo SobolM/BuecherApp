@@ -10,10 +10,10 @@ public class Buch {
     int id;
     String titel;
     String autor;
-    Date erscheinungsjahr;
+    int erscheinungsjahr;
     int anzahl;
 
-    public Buch(int id, String titel, String autor, Date erscheinungsjahr, int anzahl){
+    public Buch(int id, String titel, String autor, int erscheinungsjahr, int anzahl){
         super();
         this.id = id;
         this.titel = titel;
@@ -34,7 +34,7 @@ public class Buch {
         return id;
     }
 
-    public Date getErscheinungsjahr() {
+    public int getErscheinungsjahr() {
         return erscheinungsjahr;
     }
 

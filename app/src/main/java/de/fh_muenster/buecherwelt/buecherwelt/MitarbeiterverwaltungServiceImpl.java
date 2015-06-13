@@ -1,6 +1,7 @@
 package de.fh_muenster.buecherwelt.buecherwelt;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
@@ -9,7 +10,11 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
@@ -80,6 +85,30 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
         } catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }
+    }
+
+    @Override
+    public List<Mitarbeiter> getAllMitarbeiter() throws NoSessionException{
+        List<Mitarbeiter> alleMitarbeiter = new ArrayList<Mitarbeiter>();
+
+        //Mitarbeiter result = null;
+        String METHOD_NAME = "getAllMitarbeiter";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME);
+            Log.d(TAG, response.toString());
+            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+            if (sessionId != 0) {
+                return alleMitarbeiter;
+            }
+            else {
+                throw new NoSessionException("Please Login!");
+            }
+        } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+
+
     }
 
 
