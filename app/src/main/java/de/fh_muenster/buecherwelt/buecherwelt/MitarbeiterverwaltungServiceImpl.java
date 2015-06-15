@@ -34,7 +34,7 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.40.128:8080/buecherwelt/Mitarbeiterverwaltung";
+    private static final String URL = "http://192.168.0.14:8080/buecherwelt/Mitarbeiterverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.

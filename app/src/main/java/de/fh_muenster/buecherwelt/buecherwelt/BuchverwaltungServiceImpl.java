@@ -25,7 +25,7 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.40.128:8080/buecherwelt/Buchverwaltung";
+    private static final String URL = "http://192.168.0.14:8080/buecherwelt/Buchverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.

@@ -1,6 +1,7 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -8,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import android.os.StrictMode;
 import de.fh_muenster.buecherwelt.R;
 
 
@@ -21,6 +22,12 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //LÖSCH MICH !
+        if(Build.VERSION.SDK_INT>9){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
 
         mainTextView = (TextView) findViewById(R.id.textView);
         mainTextView.setText("Bücherwelt");
