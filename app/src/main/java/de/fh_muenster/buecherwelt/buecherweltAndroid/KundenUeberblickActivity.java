@@ -11,6 +11,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import de.fh_muenster.buecherwelt.R;
+import de.fh_muenster.buecherwelt.buecherwelt.BuchverwaltungServiceImpl;
+import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 
 public class KundenUeberblickActivity extends ActionBarActivity {
@@ -18,6 +20,7 @@ public class KundenUeberblickActivity extends ActionBarActivity {
     ListView mainListView;
     ArrayAdapter myArrayAdapter;
     ArrayList myBookList = new ArrayList();
+    BuchverwaltungServiceImpl buchverwaltungService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,5 +59,9 @@ public class KundenUeberblickActivity extends ActionBarActivity {
 
     public void listeErstellen(View v){
 
+    }
+
+    public void neuesBuch(View v) throws NoSessionException{
+        buchverwaltungService.getBuchMitIdEins();
     }
 }

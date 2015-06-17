@@ -67,6 +67,10 @@
             android:name=".buecherweltAndroid.m_mitarbeiterListe"
             android:label="@string/title_activity_m_mitarbeiter_liste" >
         </activity>
+        <activity
+            android:name=".MitarbeiterLogin"
+            android:label="@string/title_activity_mitarbeiter_login" >
+        </activity>
     </application>
 
 </manifest>

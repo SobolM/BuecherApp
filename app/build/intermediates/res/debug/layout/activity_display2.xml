@@ -63,4 +63,4 @@
         android:id="@+id/tableLayout2"
         android:layout_toRightOf="@+id/tableLayout"></TableLayout>
 </RelativeLayout>
-<!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_display2.xml -->
+<!-- From: file:/home/user/workspace/Bücherweltjava/app/src/main/res/layout/activity_display2.xml -->

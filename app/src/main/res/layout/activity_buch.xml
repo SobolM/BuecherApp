@@ -26,36 +26,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Titel"
-        android:id="@+id/textView27"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textView26"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Autor"
-        android:id="@+id/textView28"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Jahr"
-        android:id="@+id/textView29"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/editText9" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,66 +35,6 @@
         android:layout_toRightOf="@+id/textView26"
         android:layout_toEndOf="@+id/textView26" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText8"
-        android:layout_below="@+id/textView27"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText9"
-        android:layout_below="@+id/textView28"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText10"
-        android:layout_alignTop="@+id/button10"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Anzahl"
-        android:id="@+id/textView13"
-        android:layout_above="@+id/editText10"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText16"
-        android:layout_below="@+id/textView29"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="id"
-        android:id="@+id/textView14"
-        android:layout_alignBottom="@+id/textView27"
-        android:layout_toRightOf="@+id/button10"
-        android:layout_toEndOf="@+id/button10" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText17"
-        android:layout_below="@+id/editText8"
-        android:layout_alignRight="@+id/textView14"
-        android:layout_alignEnd="@+id/textView14" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,4 +43,52 @@
         android:layout_alignTop="@+id/textView24"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText18"
+        android:hint="Titel"
+        android:layout_below="@+id/textView26"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp"
+        android:layout_toLeftOf="@+id/textView25"
+        android:layout_toStartOf="@+id/textView25" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText19"
+        android:hint="Autor"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/editText18"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editText18"
+        android:layout_alignEnd="@+id/editText18" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText20"
+        android:hint="Erscheinungsjahr"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/textView25"
+        android:layout_alignRight="@+id/button10"
+        android:layout_alignEnd="@+id/button10" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText21"
+        android:hint="Anzahl"
+        android:layout_below="@+id/editText20"
+        android:layout_marginTop="58dp"
+        android:layout_alignRight="@+id/editText20"
+        android:layout_alignEnd="@+id/editText20"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

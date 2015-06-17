@@ -44,4 +44,4 @@
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
 </RelativeLayout>
-<!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_ausgw_buch_activiy.xml -->
+<!-- From: file:/home/user/workspace/Bücherweltjava/app/src/main/res/layout/activity_ausgw_buch_activiy.xml -->

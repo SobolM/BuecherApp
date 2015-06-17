@@ -8,10 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import de.fh_muenster.buecherwelt.R;
+import de.fh_muenster.buecherwelt.buecherwelt.BuchverwaltungServiceImpl;
+import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 
 public class Mitarbeiter_activity extends ActionBarActivity {
 
+    BuchverwaltungServiceImpl bw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +49,9 @@ public class Mitarbeiter_activity extends ActionBarActivity {
         startActivity(intent);
     }
 
-    public void bücher(View v){
+    public void bücher(View v) throws NoSessionException{
         Intent intent = new Intent(this, BuchActivity.class);
+        //bw.getBuchMitIdEins();
         startActivity(intent);
     }
 

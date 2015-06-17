@@ -1,8 +1,7 @@
 package de.fh_muenster.buecherwelt.buecherwelt;
 
-import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.util.Log;
+
 import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
@@ -11,18 +10,14 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
-import de.fh_muenster.buecherwelt.buecherweltAndroid.KundenActivity;
-import de.fh_muenster.buecherwelt.buecherweltAndroid.MainActivity;
-import de.fh_muenster.buecherwelt.buecherweltAndroid.Mitarbeiter_activity;
 
-import static android.support.v4.app.ActivityCompat.startActivity;
+import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
+
+
 
 /**
  * Created by user on 11.06.15.
@@ -47,16 +42,17 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
     private int sessionId;
 
     @Override
-    public void login(String benutzername, String passwort) throws InvalidLoginException {
-
-        String METHOD_NAME = "login";
+    public Mitarbeiter mitarbeiterLogin(String benutzername, String passwort) throws InvalidLoginException {
+        String METHOD_NAME = "mitarbeiterLogin";
         SoapObject response = null;
+        Mitarbeiter result = null;
         try {
             response = executeSoapAction(METHOD_NAME, benutzername, passwort);
             Log.d(TAG, response.toString());
             this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
             if (sessionId != 0) {
-                System.out.println("test");
+                String vorname =
+                result = new Mitarbeiter(vorname, String nachname, String plz, String ort, String strasse, int hausnummer, String email, String benutzername, String passwort);
             }
             else {
                 throw new InvalidLoginException("Login not successful!");
