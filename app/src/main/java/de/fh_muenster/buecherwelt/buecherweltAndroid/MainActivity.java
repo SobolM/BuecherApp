@@ -34,8 +34,14 @@ public class MainActivity extends ActionBarActivity {
             StrictMode.setThreadPolicy(policy);
         }*/
 
+        BuecherweltApplication myApp = new BuecherweltApplication();
+
         mainTextView = (TextView) findViewById(R.id.textView);
         mainTextView.setText("Bücherwelt");
+
+        TextView testView = (TextView) findViewById(R.id.editText2);
+        testView.setText(myApp.getKunde().getBenutzername());
+
 
         //mainButton = (Button) findViewById(R.id.button);
         //mainButton.setOnClickListener(this);
@@ -99,13 +105,11 @@ public class MainActivity extends ActionBarActivity {
         }*/
 
 
-
-
     public void MitarbeiterStartEinsicht(View v) {
         Intent intent = new Intent(this, MitarbeiterLogin.class);
         startActivity(intent);
     }
-}
+
 
 //@Override
     /*public void onClick(View v) {
@@ -113,66 +117,60 @@ public class MainActivity extends ActionBarActivity {
         //login(v);
     }*/
 
-private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter>
-{
-    private Context context;
+    private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
+        private Context context;
 
-    //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
-    //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
-    public LoginTask(Context context)
-    {
-        this.context = context;
-    }
+        //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
+        //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
+        public LoginTask(Context context) {
+            this.context = context;
+        }
 
-    @Override
-    protected Mitarbeiter doInBackground(String... params){
-        if(params.length != 2)
+        @Override
+        protected Mitarbeiter doInBackground(String... params) {
+            if (params.length != 2)
+                return null;
+            String username = params[0];
+            String password = params[1];
+            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+            try {
+                Mitarbeiter myMitarbeiter = myApp.getMitarbeiterverwaltungService().mitarbeiterLogin(username, password);
+                return myMitarbeiter;
+            } catch (InvalidLoginException e) {
+                e.printStackTrace();
+            }
             return null;
-        String username = params[0];
-        String password = params[1];
-        BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-        try {
-            Mitarbeiter myMitarbeiter = myApp.getMitarbeiterverwaltungService().login(username, password);
-            return myCustomer;
-        } catch (InvalidLoginException e) {
-            e.printStackTrace();
         }
-        return null;
-    }
 
-    protected void onProgessUpdate(Integer... values)
-    {
-        //wird in diesem Beispiel nicht verwendet
-    }
-
-    protected void onPostExecute(Mitarbeiter result)
-    {
-        if(result != null)
-        {
-            //erfolgreich eingeloggt
-            XbankAndroidApplication myApp = (XbankAndroidApplication) getApplication();
-            myApp.setUser(result);
-
-            //Toast anzeigen
-            CharSequence text = "Login erfolgreich! Angemeldeter Benutzername: " + result.getUserName();
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-
-            //Nächste Activity anzeigen
-            Intent i = new Intent(context, BankingActivity.class);
-            startActivity(i);
+        protected void onProgessUpdate(Integer... values) {
+            //wird in diesem Beispiel nicht verwendet
         }
-        else
-        {
-            //Toast anzeigen
-            CharSequence text = "Login fehlgeschlagen!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-    }
 
+        protected void onPostExecute(Mitarbeiter result) {
+            if (result != null) {
+                //erfolgreich eingeloggt
+                BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+                myApp.setMitarbeiter(result);
+
+                //Toast anzeigen
+                CharSequence text = "Login erfolgreich! Angemeldeter Benutzername: " + result.getBenutzername();
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                //Nächste Activity anzeigen
+                Intent i = new Intent(context, Mitarbeiter_activity.class);
+                startActivity(i);
+            } else {
+                //Toast anzeigen
+                CharSequence text = "Login fehlgeschlagen!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }
+
+    }
 }
 
 

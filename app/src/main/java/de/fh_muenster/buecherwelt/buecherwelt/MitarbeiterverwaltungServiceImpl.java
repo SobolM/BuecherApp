@@ -52,7 +52,8 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
             this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
             if (sessionId != 0) {
                 String vorname =
-                result = new Mitarbeiter(vorname, String nachname, String plz, String ort, String strasse, int hausnummer, String email, String benutzername, String passwort);
+                        response.
+                result = new Mitarbeiter(vorname,nachname,plz,  ort,  strasse, hausnummer, email,  benutzername, passwort);
             }
             else {
                 throw new InvalidLoginException("Login not successful!");
