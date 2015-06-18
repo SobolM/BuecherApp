@@ -6,6 +6,7 @@ import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -14,8 +15,6 @@ import java.util.List;
 
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
-
-import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 
 
 
@@ -29,7 +28,7 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.0.14:8080/buecherwelt/Mitarbeiterverwaltung";
+    private static final String URL = "http://192.168.2.118:8080/buecherwelt/Mitarbeiterverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.
@@ -51,9 +50,16 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
             Log.d(TAG, response.toString());
             this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
             if (sessionId != 0) {
-                String vorname =
-                        response.
-                result = new Mitarbeiter(vorname,nachname,plz,  ort,  strasse, hausnummer, email,  benutzername, passwort);
+                int id = 1;
+                String vorname = "adminVorname";
+                String nachname = "adminNachname";
+                String plz = "48153";
+                String strasse = "adminStrasse";
+                int hausnummer = 5;
+                String ort = "Münster";
+                String email = "admin@fh-muenster.de";
+                result = new Mitarbeiter(id, vorname,nachname,plz,  ort,  strasse, hausnummer, email,  benutzername, passwort);
+                return result;
             }
             else {
                 throw new InvalidLoginException("Login not successful!");
@@ -106,6 +112,40 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
         }
 
 
+    }
+
+    @Override
+    public Mitarbeiter getMitarbeiter() throws NoSessionException{
+
+        // Mitarbeiter result = null;
+        String METHOD_NAME = "mitarbeiterSuchen";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME, 1);
+            Log.d(TAG, response.toString());
+            SoapPrimitive test = (SoapPrimitive) response.getProperty("id");
+            SoapPrimitive testhaus = (SoapPrimitive) response.getProperty("hausnummer");
+            int id = Integer.valueOf(test.toString());
+            String vorname = response.getPrimitivePropertySafelyAsString("vorname");
+            String nachname = response.getPrimitivePropertySafelyAsString("nachname");
+            String plz = response.getPrimitivePropertySafelyAsString("plz");
+            String ort = response.getPrimitivePropertySafelyAsString("ort");
+            String strasse = response.getPrimitivePropertySafelyAsString("strasse");
+            int hausnummer = Integer.valueOf(testhaus.toString());
+            String email = response.getPrimitivePropertySafelyAsString("email");
+            String benutzername = response.getPrimitivePropertySafelyAsString("benutzername");
+            String passwort = response.getPrimitivePropertySafelyAsString("passwort");
+            Mitarbeiter mitarbeiter = new Mitarbeiter(id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
+            // this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+            if (true) {
+                return mitarbeiter;
+            }
+            else {
+                throw new NoSessionException("Please Login!");
+            }
+        } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
     }
 
 

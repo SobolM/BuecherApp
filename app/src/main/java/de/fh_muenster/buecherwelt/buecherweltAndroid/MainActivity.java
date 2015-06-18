@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //LÖSCH MICH !
         /*if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -39,9 +42,14 @@ public class MainActivity extends ActionBarActivity {
         mainTextView = (TextView) findViewById(R.id.textView);
         mainTextView.setText("Bücherwelt");
 
-        TextView testView = (TextView) findViewById(R.id.editText2);
-        testView.setText(myApp.getKunde().getBenutzername());
 
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(eventHandler);
+        /*TextView testView = (TextView) findViewById(R.id.editText);
+        testView.setText(myApp.getMitarbeiter().getBenutzername());
+
+        TextView testView1 = (TextView) findViewById(R.id.editText2);
+        testView1.setText(myApp.getMitarbeiter().getPasswort());*/
 
         //mainButton = (Button) findViewById(R.id.button);
         //mainButton.setOnClickListener(this);
@@ -116,6 +124,29 @@ public class MainActivity extends ActionBarActivity {
         //mainTextView.setText("Button clicked!");
         //login(v);
     }*/
+View.OnClickListener eventHandler = new View.OnClickListener() {
+    public void onClick(View ausloeser) {
+        EditText userName = (EditText) findViewById(R.id.editText2);
+        EditText password = (EditText) findViewById(R.id.editText);
+        String userName1 = userName.getText().toString();
+        String password1 = password.getText().toString();
+
+        //if(userName1.equals("admin") && !password1.equals("adminPasswort"))
+        //{
+            LoginTask loginTask = new LoginTask(ausloeser.getContext());
+            //Proxy asynchron aufrufen
+            loginTask.execute(userName1, password1);
+        //}
+        //else
+        /*{
+            //Toast anzeigen
+            CharSequence text = "Fehlende Logindaten bitte in den Einstellungen eintragen!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(ausloeser.getContext(), text, duration);
+            toast.show();
+        }*/
+    }
+};
 
     private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
         private Context context;
@@ -130,11 +161,16 @@ public class MainActivity extends ActionBarActivity {
         protected Mitarbeiter doInBackground(String... params) {
             if (params.length != 2)
                 return null;
-            String username = params[0];
-            String password = params[1];
+            EditText userName = (EditText) findViewById(R.id.editText2);
+            EditText password = (EditText) findViewById(R.id.editText);
+            String userName1 = userName.getText().toString();
+            String password1 = password.getText().toString();
+
+            //String username = params[0];
+            //String password = params[1];
             BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
             try {
-                Mitarbeiter myMitarbeiter = myApp.getMitarbeiterverwaltungService().mitarbeiterLogin(username, password);
+                Mitarbeiter myMitarbeiter = myApp.getMitarbeiterverwaltungService().mitarbeiterLogin(userName1, password1);
                 return myMitarbeiter;
             } catch (InvalidLoginException e) {
                 e.printStackTrace();
@@ -171,6 +207,8 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
+
+
 }
 
 

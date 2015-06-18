@@ -36,6 +36,10 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
      */
     private int sessionId;
 
+    private static String SOAP_ACTION1 = "http://webservices.bw.de/getBuchMitIdEins";
+
+    private static String METHODE_NAME = "getBuchMitIdEins";
+
 
 
     @Override
@@ -78,6 +82,34 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
                 result = new Buch(Integer.valueOf(soapBuchId.toString()), String.valueOf(soapBuchTitel), String.valueOf(soapBuchAutor), Integer.valueOf(soapBuchErscheinungsjahr.toString()), Integer.valueOf(soapBuchAnzahl.toString()));
                 //Logausgabe
                 return result;
+            } else {
+                throw new NoSessionException("Please Login!");
+            }
+        } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+    }
+
+   /* @Override
+    public Buch getBuchMitIdEins() throws NoSessionException {
+        Buch result = null;
+        String METHOD_NAME = "getBuchMitIdEins";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME, sessionId);
+            Log.d(TAG, response.toString());
+            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+            //Logausgabe
+            if (sessionId != 0) {
+                SoapObject soapBuchEntry = (SoapObject) response.getProperty(1);
+                SoapPrimitive soapBuchId = (SoapPrimitive) soapBuchEntry.getProperty("id");
+                SoapPrimitive soapBuchTitel = (SoapPrimitive) soapBuchEntry.getProperty("titel");
+                SoapPrimitive soapBuchAutor = (SoapPrimitive) soapBuchEntry.getProperty("autor");
+                SoapPrimitive soapBuchErscheinungsjahr = (SoapPrimitive) soapBuchEntry.getProperty("erscheinungsjahr");
+                SoapPrimitive soapBuchAnzahl = (SoapPrimitive) soapBuchEntry.getProperty("anzahl");
+                result = new Buch(Integer.valueOf(soapBuchId.toString()), String.valueOf(soapBuchTitel), String.valueOf(soapBuchAutor), Integer.valueOf(soapBuchErscheinungsjahr.toString()), Integer.valueOf(soapBuchAnzahl.toString()));
+                //Logausgabe
+                return result;
             }
             else {
                 throw new NoSessionException("Please Login!");
@@ -85,7 +117,7 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
         } catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }
-    }
+    }*/
 
 
 

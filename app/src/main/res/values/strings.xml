@@ -44,4 +44,5 @@
     <string name="Bplus">Buch hinzufügen</string>
     <string name="title_activity_m_mitarbeiter_liste">m_mitarbeiterListe</string>
     <string name="title_activity_mitarbeiter_login">MitarbeiterLogin</string>
+    <string name="title_activity_daten__mitarbeiter">Daten_Mitarbeiter</string>
 </resources>

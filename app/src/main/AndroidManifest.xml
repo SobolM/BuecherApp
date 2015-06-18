@@ -71,6 +71,10 @@
             android:name=".MitarbeiterLogin"
             android:label="@string/title_activity_mitarbeiter_login" >
         </activity>
+        <activity
+            android:name=".Daten_Mitarbeiter"
+            android:label="@string/title_activity_daten__mitarbeiter" >
+        </activity>
     </application>
 
 </manifest>

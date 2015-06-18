@@ -1,22 +1,22 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.List;
 
+import de.fh_muenster.buecherwelt.Daten_Mitarbeiter;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
-import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class m_mitarbeiterListe extends ActionBarActivity {
 
@@ -47,11 +47,25 @@ public class m_mitarbeiterListe extends ActionBarActivity {
         //Liste holen und Adapter sowie OnClickListener anhängen
         final ListView listView = (ListView) findViewById(R.id.listView2);
         final ArrayAdapter<Mitarbeiter> adapter;
+
         List<Mitarbeiter> alleMitarbeiter = myApp.getMitarbeiterverwaltungService().getAllMitarbeiter();
+        adapter = new ArrayAdapter<Mitarbeiter>(context,android.R.layout.simple_list_item_1,alleMitarbeiter);
+        listView.setAdapter(adapter);
         try {
             //Aufruf zum "Server" (getALLMitarbeiter) im dritten Parameter!
-            adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
-            listView.setAdapter(adapter);
+            //adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
+            //listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+            {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+
+                    Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
+                    startActivity(i);
+                }
+
+            });
 
             return alleMitarbeiter;
         } catch (Exception e) {

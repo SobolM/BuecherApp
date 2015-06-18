@@ -205,6 +205,7 @@
     <string name="title_activity_m_mitarbeiter_liste">m_mitarbeiterListe</string>
     <string name="title_activity_mitarbeiter_activity">Mitarbeiter_activity</string>
     <string name="title_activity_mitarbeiter_bearbeiten">Mitarbeiter_bearbeiten</string>
+    <string name="title_activity_mitarbeiter_login">MitarbeiterLogin</string>
     <string name="title_activity_neuer_kunde">NeuerKundeActivity</string>
     <string name="title_activity_neues_buch">NeuesBuchActivity</string>
     <string name="title_activity_verwaltung">VerwaltungActivity</string>

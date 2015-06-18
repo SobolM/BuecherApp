@@ -17,4 +17,6 @@ public interface MitarbeiterverwaltungService {
     public void logout() throws NoSessionException;
 
     public List<Mitarbeiter> getAllMitarbeiter() throws NoSessionException;
+
+    public Mitarbeiter getMitarbeiter() throws NoSessionException;
 }

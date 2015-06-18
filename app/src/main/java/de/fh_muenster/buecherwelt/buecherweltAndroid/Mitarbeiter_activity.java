@@ -1,20 +1,25 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuchverwaltungServiceImpl;
+import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
+import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 
 public class Mitarbeiter_activity extends ActionBarActivity {
 
     BuchverwaltungServiceImpl bw;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,20 +49,22 @@ public class Mitarbeiter_activity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void kunden(View v){
+    public void kunden(View v) {
         Intent intent = new Intent(this, KundenActivity.class);
         startActivity(intent);
     }
 
-    public void bücher(View v) throws NoSessionException{
+    public void bücher(View v) throws NoSessionException {
         Intent intent = new Intent(this, BuchActivity.class);
         //bw.getBuchMitIdEins();
         startActivity(intent);
     }
 
-    public void mitarbeiter(View v){
+    public void mitarbeiter(View v) {
         Intent intent = new Intent(this, m_mitarbeiterListe.class);
         startActivity(intent);
 
     }
+
+    
 }
