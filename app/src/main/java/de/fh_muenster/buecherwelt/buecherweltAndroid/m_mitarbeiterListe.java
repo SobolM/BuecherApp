@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class m_mitarbeiterListe extends ActionBarActivity {
 
     //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
     //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
-    public List<Mitarbeiter> MitarbeiterTask(Context context) throws Exception {
+    public List<String> MitarbeiterTask(Context context) throws Exception {
         this.context = context;
 
         BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
@@ -47,19 +48,21 @@ public class m_mitarbeiterListe extends ActionBarActivity {
         //Liste holen und Adapter sowie OnClickListener anhängen
         final ListView listView = (ListView) findViewById(R.id.listView2);
         final ArrayAdapter<Mitarbeiter> adapter;
-
-        List<Mitarbeiter> alleMitarbeiter = myApp.getMitarbeiterverwaltungService().getAllMitarbeiter();
-        adapter = new ArrayAdapter<Mitarbeiter>(context,android.R.layout.simple_list_item_1,alleMitarbeiter);
+        final Mitarbeiter mitarbeiter = myApp.getMitarbeiterverwaltungService().getMitarbeiter();
+        List<String> alleMitarbeiter = myApp.getMitarbeiterverwaltungService().getAllMitarbeiter();
+        //adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
         listView.setAdapter(adapter);
         try {
             //Aufruf zum "Server" (getALLMitarbeiter) im dritten Parameter!
-            //adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
-            //listView.setAdapter(adapter);
+
+            listView.setAdapter(adapter);
+            final TextView textViewBenutzername = (TextView) findViewById(R.id.textView17);
+            textViewBenutzername.setText(mitarbeiter.getBenutzername());
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+
 
                     Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
                     startActivity(i);

@@ -28,7 +28,7 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.2.118:8080/buecherwelt/Mitarbeiterverwaltung";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Mitarbeiterverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.
@@ -50,15 +50,8 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
             Log.d(TAG, response.toString());
             this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
             if (sessionId != 0) {
-                int id = 1;
-                String vorname = "adminVorname";
-                String nachname = "adminNachname";
-                String plz = "48153";
-                String strasse = "adminStrasse";
-                int hausnummer = 5;
-                String ort = "Münster";
-                String email = "admin@fh-muenster.de";
-                result = new Mitarbeiter(id, vorname,nachname,plz,  ort,  strasse, hausnummer, email,  benutzername, passwort);
+
+                //result = new Mitarbeiter(id, vorname,nachname,plz,  ort,  strasse, hausnummer, email,  benutzername, passwort);
                 return result;
             }
             else {
@@ -97,16 +90,17 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
         //Mitarbeiter result = null;
         String METHOD_NAME = "getAllMitarbeiter";
         SoapObject response = null;
+
         try {
             response = executeSoapAction(METHOD_NAME);
             Log.d(TAG, response.toString());
-            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
-            if (sessionId != 0) {
-                return alleMitarbeiter;
-            }
-            else {
-                throw new NoSessionException("Please Login!");
-            }
+            alleMitarbeiter.add();
+            return alleMitarbeiter;
+
+
+
+
+
         } catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }

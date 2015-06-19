@@ -53,4 +53,4 @@
         android:layout_toStartOf="@+id/button3"
         android:onClick="Logout" />
 </RelativeLayout>
-<!-- From: file:/home/user/workspace/Bücherweltjava/app/src/main/res/layout/activity_verwaltung.xml -->
+<!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_verwaltung.xml -->

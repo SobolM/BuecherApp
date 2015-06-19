@@ -77,6 +77,10 @@
             android:name="de.fh_muenster.buecherwelt.MitarbeiterLogin"
             android:label="@string/title_activity_mitarbeiter_login" >
         </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.Daten_Mitarbeiter"
+            android:label="@string/title_activity_daten__mitarbeiter" >
+        </activity>
     </application>
 
 </manifest>
