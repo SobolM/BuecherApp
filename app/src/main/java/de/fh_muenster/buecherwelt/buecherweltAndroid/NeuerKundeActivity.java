@@ -1,23 +1,13 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.content.Context;
-import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.List;
 
 import de.fh_muenster.buecherwelt.R;
-import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
-import de.fh_muenster.buecherwelt.buecherwelt.Kunde;
 
 
 public class NeuerKundeActivity extends ActionBarActivity {
@@ -51,5 +41,9 @@ public class NeuerKundeActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void speichern(View v){
+        Intent intent = new Intent(this, KundenActivity.class);
+        startActivity(intent);
+    }
 
 }

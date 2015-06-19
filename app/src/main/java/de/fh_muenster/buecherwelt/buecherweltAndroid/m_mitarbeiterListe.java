@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import de.fh_muenster.buecherwelt.Daten_Mitarbeiter;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
@@ -108,4 +107,5 @@ public class m_mitarbeiterListe extends ActionBarActivity {
         return null;
 
     }
+
 }

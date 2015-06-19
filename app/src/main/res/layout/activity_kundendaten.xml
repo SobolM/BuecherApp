@@ -4,13 +4,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="de.fh_muenster.buecherwelt.buecherweltAndroid.NeuerKundeActivity">
+    tools:context="de.fh_muenster.buecherwelt.buecherweltAndroid.Kundendaten">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bücherwelt"
-        android:id="@+id/textView11"
+        android:text="@string/Bücherwelt"
+        android:id="@+id/textViewBücherweltKundendaten"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -18,10 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Neuer Kunde:"
-        android:id="@+id/textView12"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textView11"
+        android:text="@string/KundenDatenÄndern"
+        android:id="@+id/textViewKundenDatenÄndern"
+        android:layout_below="@+id/textViewBücherweltKundendaten"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -29,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Speichern"
-        android:id="@+id/button6"
+        android:id="@+id/buttonSpeichern"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/textView11"
         android:layout_alignEnd="@+id/textView11"
@@ -41,11 +40,11 @@
         android:inputType="textPersonName"
         android:hint="@string/FristName"
         android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_below="@+id/textView12"
+        android:id="@+id/editTextFirstName"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/textViewBücherweltKundendaten"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="17dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -53,11 +52,11 @@
         android:inputType="textPersonName"
         android:hint="@string/LastName"
         android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_below="@+id/editText3"
+        android:id="@+id/editTextLastName"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/editTextFirstName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -65,7 +64,7 @@
         android:inputType="textPostalAddress"
         android:hint="@string/Address"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/editTextAddress"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -76,8 +75,8 @@
         android:inputType="textPostalAddress"
         android:hint="@string/PLZ"
         android:ems="10"
-        android:id="@+id/editText6"
-        android:layout_below="@+id/editText5"
+        android:id="@+id/editTextPLZ"
+        android:layout_below="@+id/editTextAddress"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="39dp" />
@@ -88,11 +87,10 @@
         android:inputType="textPostalAddress"
         android:hint="@string/Ort"
         android:ems="10"
-        android:id="@+id/editText7"
-        android:layout_below="@+id/editText6"
+        android:id="@+id/editTextOrt"
+        android:layout_below="@+id/editTextPLZ"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="42dp" />
 
 </RelativeLayout>
-<!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_neuer_kunde.xml -->

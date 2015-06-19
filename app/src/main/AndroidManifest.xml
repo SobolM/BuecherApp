@@ -68,12 +68,28 @@
             android:label="@string/title_activity_m_mitarbeiter_liste" >
         </activity>
         <activity
-            android:name=".MitarbeiterLogin"
+            android:name=".buecherweltAndroid.MitarbeiterLogin"
             android:label="@string/title_activity_mitarbeiter_login" >
         </activity>
         <activity
-            android:name=".Daten_Mitarbeiter"
+            android:name=".buecherweltAndroid.Daten_Mitarbeiter"
             android:label="@string/title_activity_daten__mitarbeiter" >
+        </activity>
+        <activity
+            android:name=".buecherweltAndroid.Kundendaten"
+            android:label="@string/title_activity_kundendaten" >
+        </activity>
+        <activity
+            android:name=".buecherweltAndroid.buecherweltListe"
+            android:label="@string/title_activity_buecherwelt_liste" >
+        </activity>
+        <activity
+            android:name=".buecherweltAndroid.buecherListe"
+            android:label="@string/title_activity_buecher_liste" >
+        </activity>
+        <activity
+            android:name=".buecherweltAndroid.Ausleihkonto"
+            android:label="@string/title_activity_ausleihkonto" >
         </activity>
     </application>
 

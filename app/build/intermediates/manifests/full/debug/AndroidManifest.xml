@@ -81,6 +81,22 @@
             android:name="de.fh_muenster.buecherwelt.Daten_Mitarbeiter"
             android:label="@string/title_activity_daten__mitarbeiter" >
         </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.Kundendaten"
+            android:label="@string/title_activity_kundendaten" >
+        </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.buecherweltListe"
+            android:label="@string/title_activity_buecherwelt_liste" >
+        </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.buecherListe"
+            android:label="@string/title_activity_buecher_liste" >
+        </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.Ausleihkonto"
+            android:label="@string/title_activity_ausleihkonto" >
+        </activity>
     </application>
 
 </manifest>

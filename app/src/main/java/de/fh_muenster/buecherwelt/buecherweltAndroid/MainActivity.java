@@ -3,12 +3,8 @@ package de.fh_muenster.buecherwelt.buecherweltAndroid;
 import android.content.Context;
 import android.content.Intent;
 
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,15 +14,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import de.fh_muenster.buecherwelt.MitarbeiterLogin;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 
-import static android.support.v4.app.ActivityCompat.startActivity;
-
-
+/*
+Muss beim login übergehen in die KundeneinsichtActivity
+ */
 public class MainActivity extends ActionBarActivity {
 
     TextView mainTextView;

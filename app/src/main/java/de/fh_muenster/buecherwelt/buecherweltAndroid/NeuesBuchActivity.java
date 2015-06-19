@@ -29,7 +29,7 @@ public class NeuesBuchActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_neues_buch);
+        setContentView(R.layout.activity_buecher_liste);
 
         Button button = (Button) findViewById(R.id.button10);
         button.setOnClickListener(eventHandler);

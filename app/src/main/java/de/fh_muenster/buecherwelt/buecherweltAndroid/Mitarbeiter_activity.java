@@ -9,15 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+
 import de.fh_muenster.buecherwelt.R;
-import de.fh_muenster.buecherwelt.buecherwelt.BuchverwaltungServiceImpl;
+
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
-import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
-import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
+
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 
@@ -64,8 +62,9 @@ public class Mitarbeiter_activity extends ActionBarActivity {
     }
 
     public void bücher(View v) throws NoSessionException {
-        Intent intent = new Intent(this, NeuesBuchActivity.class);
-        //bw.getBuchMitIdEins();
+
+        Intent intent = new Intent(this, buecherListe.class);
+
         startActivity(intent);
     }
 
@@ -133,6 +132,7 @@ public class Mitarbeiter_activity extends ActionBarActivity {
             }
         }
     }
+
 
     
 }

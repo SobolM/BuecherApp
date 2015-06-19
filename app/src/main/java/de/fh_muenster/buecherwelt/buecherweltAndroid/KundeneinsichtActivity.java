@@ -48,7 +48,7 @@ public class KundeneinsichtActivity extends ActionBarActivity {
     }
 
     public void leihlisteEinsehen(View v){
-        Intent intent = new Intent(this,Display2Activity.class);
+        Intent intent = new Intent(this,AusgwBuchActiviy.class);
         startActivity(intent);
     }
 

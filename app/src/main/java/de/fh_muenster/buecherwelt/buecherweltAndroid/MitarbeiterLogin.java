@@ -1,4 +1,4 @@
-package de.fh_muenster.buecherwelt;
+package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import de.fh_muenster.buecherwelt.buecherweltAndroid.m_mitarbeiterListe;
+import de.fh_muenster.buecherwelt.R;
+import de.fh_muenster.buecherwelt.buecherweltAndroid.Mitarbeiter_activity;
 
 
 public class MitarbeiterLogin extends ActionBarActivity {
@@ -42,7 +43,7 @@ public class MitarbeiterLogin extends ActionBarActivity {
     }
 
     public void login(View v){
-        Intent intent = new Intent(this, m_mitarbeiterListe.class);
+        Intent intent = new Intent(this, Mitarbeiter_activity.class);
         startActivity(intent);
     }
 }
