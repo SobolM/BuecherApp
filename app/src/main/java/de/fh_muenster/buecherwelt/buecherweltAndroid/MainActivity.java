@@ -1,8 +1,10 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.os.AsyncTask;
+=======
+>>>>>>> d1c24c7fc1390a68004a850462e84deff1df9241
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -13,13 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.fh_muenster.buecherwelt.MitarbeiterLogin;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
-import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
-import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -209,7 +208,10 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }*/
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1c24c7fc1390a68004a850462e84deff1df9241
 
 
 

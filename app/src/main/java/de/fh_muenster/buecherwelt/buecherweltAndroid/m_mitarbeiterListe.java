@@ -18,6 +18,7 @@ import de.fh_muenster.buecherwelt.Daten_Mitarbeiter;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
+import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class m_mitarbeiterListe extends ActionBarActivity {
 
@@ -43,7 +44,7 @@ public class m_mitarbeiterListe extends ActionBarActivity {
     public List<String> MitarbeiterTask(Context context) throws Exception {
         this.context = context;
 
-        BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+        final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
 
         //Liste holen und Adapter sowie OnClickListener anhängen
         final ListView listView = (ListView) findViewById(R.id.listView2);
@@ -52,19 +53,38 @@ public class m_mitarbeiterListe extends ActionBarActivity {
         List<String> alleMitarbeiter = myApp.getMitarbeiterverwaltungService().getAllMitarbeiter();
         //adapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
         listView.setAdapter(adapter);
+        alleMitarbeiter.add(myApp.getMitarbeiter());
+        //adapter.notifyDataSetChanged();
         try {
             //Aufruf zum "Server" (getALLMitarbeiter) im dritten Parameter!
+<<<<<<< HEAD
 
             listView.setAdapter(adapter);
             final TextView textViewBenutzername = (TextView) findViewById(R.id.textView17);
             textViewBenutzername.setText(mitarbeiter.getBenutzername());
+=======
+            //adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
+            //listView.setAdapter(adapter);
+            //Mitarbeiter mitarbeiter = null;
+            //mitarbeiter = myApp.getMitarbeiterverwaltungService().getMitarbeiter();
+>>>>>>> d1c24c7fc1390a68004a850462e84deff1df9241
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
             {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+<<<<<<< HEAD
 
+=======
+                final TextView textView17 = (TextView) findViewById(R.id.textView17);
+                try {
+>>>>>>> d1c24c7fc1390a68004a850462e84deff1df9241
 
-                    Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
+                    textView17.setText(myApp.getMitarbeiterverwaltungService().getMitarbeiter().getNachname());
+                } catch (NoSessionException e) {
+                    e.printStackTrace();
+                }
+
+                Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
                     startActivity(i);
                 }
 
