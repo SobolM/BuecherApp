@@ -161,6 +161,7 @@
     <string name="Employee">Mitarbeiter</string>
     <string name="FristName">Vorname</string>
     <string name="Hnr">Hausnummer</string>
+    <string name="KundenDatenÄndern">Meine Daten ändern:</string>
     <string name="LastName">Nachname</string>
     <string name="Login">Login</string>
     <string name="Logout">Logout</string>
@@ -197,11 +198,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="speichern">Speichern</string>
     <string name="title_activity_ausgw_buch_activiy">AusgwBuchActiviy</string>
+    <string name="title_activity_ausleihkonto">Ausleihkonto</string>
     <string name="title_activity_buch">BuchActivity</string>
+    <string name="title_activity_buecher_liste">buecherListe</string>
+    <string name="title_activity_buecherwelt_liste">buecherweltListe</string>
     <string name="title_activity_daten__mitarbeiter">Daten_Mitarbeiter</string>
     <string name="title_activity_display2">Display 2</string>
     <string name="title_activity_kunden">KundenActivity</string>
     <string name="title_activity_kunden_ueberblick">KundenUeberblickActivity</string>
+    <string name="title_activity_kundendaten">Kundendaten</string>
     <string name="title_activity_kundeneinsicht">KundeneinsichtActivity</string>
     <string name="title_activity_m_mitarbeiter_liste">m_mitarbeiterListe</string>
     <string name="title_activity_mitarbeiter_activity">Mitarbeiter_activity</string>

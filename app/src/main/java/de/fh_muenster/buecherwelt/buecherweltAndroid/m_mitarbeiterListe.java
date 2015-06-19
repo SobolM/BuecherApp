@@ -108,4 +108,9 @@ public class m_mitarbeiterListe extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void NeuenmitarbeiterHinzufügen(View v){
+        Intent intent = new Intent(this, Mitarbeiter_bearbeiten.class);
+        startActivity(intent);
+    }
 }

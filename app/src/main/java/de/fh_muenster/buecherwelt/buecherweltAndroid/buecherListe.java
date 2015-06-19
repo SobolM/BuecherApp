@@ -7,27 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import de.fh_muenster.buecherwelt.MitarbeiterLogin;
 import de.fh_muenster.buecherwelt.R;
-import de.fh_muenster.buecherwelt.buecherwelt.BuchverwaltungServiceImpl;
-import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
-
-public class Mitarbeiter_activity extends ActionBarActivity {
-
-    BuchverwaltungServiceImpl bw;
+public class buecherListe extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mitarbeiter_activity);
+        setContentView(R.layout.activity_buecher_liste);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_mitarbeiter_activity, menu);
+        getMenuInflater().inflate(R.menu.menu_buecher_liste, menu);
         return true;
     }
 
@@ -46,27 +40,8 @@ public class Mitarbeiter_activity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void kunden(View v) {
-        Intent intent = new Intent(this, KundenActivity.class);
+    public void neuesBuchHinzufügen(View v){
+        Intent intent = new Intent(this, BuchActivity.class);
         startActivity(intent);
     }
-
-    public void bücher(View v) throws NoSessionException {
-        Intent intent = new Intent(this, buecherListe.class);
-        //bw.getBuchMitIdEins();
-        startActivity(intent);
-    }
-
-    public void mitarbeiter(View v) {
-        Intent intent = new Intent(this, m_mitarbeiterListe.class);
-        startActivity(intent);
-
-    }
-
-    public void MitarbeiterLogout(View v){
-        Intent intent = new Intent(this, MitarbeiterLogin.class);
-        startActivity(intent);
-    }
-
-    
 }

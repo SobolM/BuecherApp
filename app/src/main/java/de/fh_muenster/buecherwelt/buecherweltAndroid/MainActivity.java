@@ -16,7 +16,9 @@ import de.fh_muenster.buecherwelt.MitarbeiterLogin;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 
-
+/*
+Muss beim login übergehen in die KundeneinsichtActivity
+ */
 public class MainActivity extends ActionBarActivity {
 
     TextView mainTextView;

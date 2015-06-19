@@ -1,9 +1,11 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import de.fh_muenster.buecherwelt.R;
 
@@ -37,5 +39,10 @@ public class AusgwBuchActiviy extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void verlängern(View v){
+        Intent intent = new Intent(this, Ausleihkonto.class);
+        startActivity(intent);
     }
 }

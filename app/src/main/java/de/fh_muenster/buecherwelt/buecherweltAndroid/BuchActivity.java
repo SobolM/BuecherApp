@@ -41,8 +41,8 @@ public class BuchActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void neuesBuch(View v) {
-        Intent intent = new Intent(this, NeuesBuchActivity.class);
+    public void speichern(View v) {
+        Intent intent = new Intent(this, buecherListe.class);
         startActivity(intent);
     }
 }

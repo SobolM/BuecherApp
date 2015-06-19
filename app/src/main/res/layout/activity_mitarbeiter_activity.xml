@@ -50,5 +50,5 @@
         android:id="@+id/button21"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="Logout" />
+        android:onClick="MitarbeiterLogout" />
 </RelativeLayout>

@@ -45,4 +45,9 @@
     <string name="title_activity_m_mitarbeiter_liste">m_mitarbeiterListe</string>
     <string name="title_activity_mitarbeiter_login">MitarbeiterLogin</string>
     <string name="title_activity_daten__mitarbeiter">Daten_Mitarbeiter</string>
+    <string name="title_activity_kundendaten">Kundendaten</string>
+    <string name="KundenDatenÄndern">Meine Daten ändern:</string>
+    <string name="title_activity_buecherwelt_liste">buecherweltListe</string>
+    <string name="title_activity_buecher_liste">buecherListe</string>
+    <string name="title_activity_ausleihkonto">Ausleihkonto</string>
 </resources>
