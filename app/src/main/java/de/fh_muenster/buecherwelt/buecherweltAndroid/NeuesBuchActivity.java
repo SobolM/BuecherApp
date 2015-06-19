@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,32 +20,19 @@ import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class NeuesBuchActivity extends ActionBarActivity {
 
+    private static final String NAMESPACE = "http://webservices.bw.de/";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Buchverwaltung";
+    private static final String METHOD_NAME = "neuesBuchHinzufuegen";
+    private static final String TAG = NeuesBuchTask.class.getName();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neues_buch);
 
-        final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-
-        Bucherhalten bucherhaltenTask = new Bucherhalten(this);
-        //Proxy asynchron aufrufen
-        bucherhaltenTask.execute();
-
-        //UserName-TextView holen und Usernamen setzen
-        //Es muss kein Aufruf zum Server erfolgen, da das Customer-Objekt bereits beim Login geladen wurde.
-        /*EditText id = (EditText) findViewById(R.id.editText17);
-        id.setText(myApp.getBuch().getTitel());
-        EditText titel = (EditText) findViewById(R.id.editText8);
-        titel.setText(myApp.getBuch().getTitel().toString());
-        EditText autor = (EditText) findViewById(R.id.editText9);
-        autor.setText(myApp.getBuch().getTitel());
-        EditText jahr = (EditText) findViewById(R.id.editText16);
-        jahr.setText(myApp.getBuch().getTitel().toString());
-        EditText anzahl = (EditText) findViewById(R.id.editText10);
-        anzahl.setText(myApp.getBuch().getTitel());*/
-
-
+        Button button = (Button) findViewById(R.id.button10);
+        button.setOnClickListener(eventHandler);
     }
 
 
@@ -68,24 +58,65 @@ public class NeuesBuchActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private class Bucherhalten extends AsyncTask<Void, Void, Buch> {
+    View.OnClickListener eventHandler = new View.OnClickListener() {
+        public void onClick(View ausloeser) {
+
+            TextView buchTiteltextView = (TextView) findViewById(R.id.editText18);
+            String titel = buchTiteltextView.getText().toString();
+
+            TextView buchAutortextView = (TextView) findViewById(R.id.editText19);
+            String autor = buchAutortextView.getText().toString();
+
+            TextView buchJahrtextView = (TextView) findViewById(R.id.editText20);
+            String jahr = buchJahrtextView.getText().toString();
+            //int jahr = Integer.valueOf(buchJahrtextView.toString());
+
+            TextView anzahlTextView = (TextView) findViewById(R.id.editText21);
+            String anzahl = anzahlTextView.getText().toString();
+            //int anzahl = Integer.valueOf(anzahlTextView.toString());
+
+            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+
+            if(ausloeser.getId() == R.id.button10)
+            {
+                NeuesBuchTask neuesBuchTask = new NeuesBuchTask(ausloeser.getContext());
+                //Proxy asynchron aufrufen
+                neuesBuchTask.execute(titel, autor, jahr, anzahl);
+            }
+            else
+            {
+                //Toast anzeigen
+                CharSequence text = "Fehlende Logindaten bitte in den Einstellungen eintragen!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(ausloeser.getContext(), text, duration);
+                toast.show();
+            }
+        }
+    };
+
+    private class NeuesBuchTask extends AsyncTask<String, Void, Buch> {
         private Context context;
-
-
-
 
         //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
         //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
-        public Bucherhalten(Context context) {
+        public NeuesBuchTask(Context context) {
             this.context = context;
         }
 
-        @Override
-        protected Buch doInBackground(Void... params) {
+        //@Override
+        protected Buch doInBackground(String... params) {
+
+            if(params.length != 4)
+                return null;
+            String titel  = params[0];
+            String autor  = params[1];
+            int jahr = Integer.valueOf(params[2]);
+            int anzahl = Integer.valueOf(params[3]);
+
             BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
             try {
-                Buch myBuch = myApp.getBuchverwaltungService().getBuchMitIdEins();
-                return myBuch;
+                myApp.getBuchverwaltungService().neuesBuchHinzufuegen(titel, autor, jahr, anzahl);
+
             } catch (NoSessionException e) {
                 e.printStackTrace();
             }
@@ -97,67 +128,6 @@ public class NeuesBuchActivity extends ActionBarActivity {
         protected void onPostExecute(final Buch myBuch) {
             if (myBuch != null) {
                 final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-
-                //UserName-TextView holen und Usernamen setzen
-                //Es muss kein Aufruf zum Server erfolgen, da das Customer-Objekt bereits beim Login geladen wurde.
-                TextView buchTiteltextView = (TextView) findViewById(R.id.editText18);
-                buchTiteltextView.setText(myApp.getBuch().getTitel());
-
-                TextView buchAutortextView = (TextView) findViewById(R.id.editText19);
-                buchAutortextView.setText(myApp.getBuch().getAutor());
-
-                TextView buchJahrtextView = (TextView) findViewById(R.id.editText20);
-                buchJahrtextView.setText(myApp.getBuch().getErscheinungsjahr());
-
-                TextView anzahlTextView = (TextView) findViewById(R.id.editText21);
-                anzahlTextView.setText(myApp.getBuch().getAnzahl());
-
-
-
-                //AccountCount-TextView holen und Anzahl der Konten als Text setzen
-                /*Integer count = myAccounts.size();
-                TextView accountCountTextView = (TextView) findViewById(R.id.accountCountTextView);
-                accountCountTextView.setText(count.toString());*/
-
-                //Liste holen und Adapter sowie OnClickListener anhängen
-                /*final ListView listView = (ListView) findViewById(R.id.listView);
-                final ArrayAdapter<Account> adapter;
-                try {
-                    //Aufruf zum "Server" (getMyAccounts) im dritten Parameter!
-                    adapter = new ArrayAdapter<Account>(context, android.R.layout.simple_list_item_1, myAccounts);
-                    listView.setAdapter(adapter);
-
-                    //OnItemClickListener zu der Liste hinzufügen. Erst jetzt ist der ArrayAdapter bekannt, der für den TransferTask erforderlich ist.
-                    //Die Referenz auf den Adapter könnte auch über andere Wege abgespeichert werden, z.B. über eine Klassenvariable etc
-                    //--> damit könnte der nachfolgende OnItemClickListener ausgelagert werden.
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view,
-                                                int position, long id) {
-
-                            XbankAndroidApplication myApp = (XbankAndroidApplication) getApplication();
-
-                            //Das Geld wird hier testweise dem nächsten Account in der Liste hinzugefügt.
-                            Account fromAccount = myAccounts.get(position);
-                            Account toAccount = myAccounts.get((position + 1) % myAccounts.size());
-
-                            //TransferTask ausfuehren. Dies startet einen neuen Asynchronen Task.
-                            TransferTask transferTask = new TransferTask(myApp);
-                            transferTask.execute(fromAccount.getId(), toAccount.getId(), 500);
-
-                            //Liste aktualisieren, dafuer Kontostaende neu abfragen.
-                            UpdateListTask updateListTask= new UpdateListTask(myAccounts, adapter, myApp);
-                            updateListTask.execute();
-
-                            //Hier koennte alternativ eine weitere Activity gestartet werden, die eine "echte" Ueberweisung durchfuehrt.
-                            //Intent i = new Intent(view.getContext(), xxx.class);
-                            //startActivity(i);
-                        }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
-
             } else {
                 //Toast anzeigen
                 CharSequence text = "Auslesen der Konten fehlgeschlagen!";
@@ -165,8 +135,6 @@ public class NeuesBuchActivity extends ActionBarActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
-
-
         }
     }
 }

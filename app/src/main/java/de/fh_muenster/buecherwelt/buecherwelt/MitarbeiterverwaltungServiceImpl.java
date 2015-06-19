@@ -38,20 +38,22 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
     /**
      * sessionId contains the session id delivered from the server.
      */
-    private int sessionId;
+     int sessionId;
 
     @Override
     public Mitarbeiter mitarbeiterLogin(String benutzername, String passwort) throws InvalidLoginException {
-        String METHOD_NAME = "mitarbeiterLogin";
+        String METHOD_NAME = "loginMitarbeiter";
         SoapObject response = null;
         Mitarbeiter result = null;
         try {
             response = executeSoapAction(METHOD_NAME, benutzername, passwort);
             Log.d(TAG, response.toString());
-            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+            SoapPrimitive id = (SoapPrimitive) response.getProperty("id");
+            this.sessionId = Integer.valueOf(id.toString());
+
             if (sessionId != 0) {
 
-                //result = new Mitarbeiter(id, vorname,nachname,plz,  ort,  strasse, hausnummer, email,  benutzername, passwort);
+                result = new Mitarbeiter(benutzername, passwort);
                 return result;
             }
             else {
@@ -70,7 +72,7 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
         try {
             response = executeSoapAction(METHOD_NAME, id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
             Log.d(TAG, response.toString());
-            this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+
             if (sessionId != 0) {
                 result = new Mitarbeiter(id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
 
@@ -86,21 +88,18 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
     @Override
     public List<Mitarbeiter> getAllMitarbeiter() throws NoSessionException{
         List<Mitarbeiter> alleMitarbeiter = new ArrayList<Mitarbeiter>();
-
-        //Mitarbeiter result = null;
         String METHOD_NAME = "getAllMitarbeiter";
         SoapObject response = null;
-
         try {
             response = executeSoapAction(METHOD_NAME);
             Log.d(TAG, response.toString());
-            alleMitarbeiter.add();
-            return alleMitarbeiter;
 
-
-
-
-
+            if (sessionId != 0) {
+                return alleMitarbeiter;
+            }
+            else {
+                throw new NoSessionException("Please Login!");
+            }
         } catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }
@@ -130,7 +129,7 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
             String benutzername = response.getPrimitivePropertySafelyAsString("benutzername");
             String passwort = response.getPrimitivePropertySafelyAsString("passwort");
             Mitarbeiter mitarbeiter = new Mitarbeiter(id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
-            // this.sessionId = Integer.parseInt(response.getPrimitivePropertySafelyAsString("sessionId"));
+
             if (true) {
                 return mitarbeiter;
             }

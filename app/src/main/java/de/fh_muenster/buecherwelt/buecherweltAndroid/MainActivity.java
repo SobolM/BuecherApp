@@ -1,13 +1,14 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
+import android.content.Context;
 import android.content.Intent;
-<<<<<<< HEAD
+
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
-=======
->>>>>>> d1c24c7fc1390a68004a850462e84deff1df9241
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,16 +16,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import de.fh_muenster.buecherwelt.MitarbeiterLogin;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
+import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
+import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 
 public class MainActivity extends ActionBarActivity {
 
     TextView mainTextView;
-    //Button mainButton;
+    private static final String NAMESPACE = "http://webservices.bw.de/";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Mitarbeiterverwaltung";
+    private static final String METHOD_NAME = "loginMitarbeiter";
+    private static final String TAG = LoginTask.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,27 +42,15 @@ public class MainActivity extends ActionBarActivity {
 
 
         //LÖSCH MICH !
-        if (Build.VERSION.SDK_INT > 9) {
+        /*if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
-        }
+        }*/
 
-        BuecherweltApplication myApp = new BuecherweltApplication();
+        //Button OnClickListener setzen (Deklaration des Eventhandlers siehe unten)
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(eventHandler);
 
-        mainTextView = (TextView) findViewById(R.id.textView);
-        mainTextView.setText("Bücherwelt");
-
-
-        //Button button = (Button) findViewById(R.id.button);
-        //button.setOnClickListener(eventHandler);
-        /*TextView testView = (TextView) findViewById(R.id.editText);
-        testView.setText(myApp.getMitarbeiter().getBenutzername());
-
-        TextView testView1 = (TextView) findViewById(R.id.editText2);
-        testView1.setText(myApp.getMitarbeiter().getPasswort());*/
-
-        //mainButton = (Button) findViewById(R.id.button);
-        //mainButton.setOnClickListener(this);
     }
 
 
@@ -79,77 +76,45 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View view) {
-        Intent intent = new Intent(this, KundeneinsichtActivity.class);
-        EditText userName = (EditText) findViewById(R.id.editText2);
-        EditText password = (EditText) findViewById(R.id.editText);
-        String userName1 = userName.getText().toString();
-        String password1 = password.getText().toString();
-        String Name = "Julian";
-        String Password = "hallo";
-        if (userName1.equals(Name) && password1.equals(Password)) {
-            startActivity(intent);
-        }
-        if (userName1.equals("Mitarbeiter") && password1.equals("m")) {
-            Intent intent2 = new Intent(this, Mitarbeiter_activity.class);
-            startActivity(intent2);
-
-        }
-    }
-
-    /*public void eingabeLesen(View v) {
-        EditText userName = (EditText) findViewById(R.id.editText2);
-        EditText password = (EditText) findViewById(R.id.editText);
-        String userName1 = userName.getText().toString();
-        String password1 = password.getText().toString();
-
-
-    }*/
-        /*String benutzernameKundeDB = myApp.getKundenverwaltungService().getKunde().getBenutzername();
-        String benutzernameMaDb = myApp.getMitarbeiterverwaltungService().getMitarbeiter().getBenutzername();
-
-        if(benutzernameEingabe == benutzernameMaDB){
-            startActivity(intent, Mitarbeiterueberblick.class)
-            myApp.getMitarbeiterverwaltungService().mitarbeiterLogin();
-        }*/
-
 
     public void MitarbeiterStartEinsicht(View v) {
         Intent intent = new Intent(this, MitarbeiterLogin.class);
         startActivity(intent);
     }
 
+    View.OnClickListener eventHandler = new View.OnClickListener() {
+        public void onClick(View ausloeser) {
 
-//@Override
-    /*public void onClick(View v) {
-        //mainTextView.setText("Button clicked!");
-        //login(v);
-    }*/
-/*View.OnClickListener eventHandler = new View.OnClickListener() {
-    public void onClick(View ausloeser) {
-        EditText userName = (EditText) findViewById(R.id.editText2);
-        EditText password = (EditText) findViewById(R.id.editText);
-        String userName1 = userName.getText().toString();
-        String password1 = password.getText().toString();
+            EditText userName = (EditText) findViewById(R.id.editText2);
+            EditText password = (EditText) findViewById(R.id.editText);
+            String userName1 = userName.getText().toString();
+            String password1 = password.getText().toString();
 
-        //if(userName1.equals("admin") && !password1.equals("adminPasswort"))
-        //{
-            //LoginTask loginTask = new LoginTask(ausloeser.getContext());
-            //Proxy asynchron aufrufen
-            //loginTask.execute(userName1, password1);
-        //}
-        //else
-        /*{
-            //Toast anzeigen
-            CharSequence text = "Fehlende Logindaten bitte in den Einstellungen eintragen!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(ausloeser.getContext(), text, duration);
-            toast.show();
-        }*/
-    }
-//};
+            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
 
-    /*private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
+
+            if(ausloeser.getId() == R.id.button)
+            {
+                LoginTask loginTask = new LoginTask(ausloeser.getContext());
+                //Proxy asynchron aufrufen
+                loginTask.execute(userName1, password1);
+
+            }
+                else
+            {
+                //Toast anzeigen
+                CharSequence text = "Fehlende Logindaten bitte in den Einstellungen eintragen!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(ausloeser.getContext(), text, duration);
+                toast.show();
+            }
+        }
+    };
+
+
+    private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
+
+
         private Context context;
 
         //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
@@ -160,19 +125,14 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected Mitarbeiter doInBackground(String... params) {
-            if (params.length != 2)
+            if(params.length != 2)
                 return null;
-            EditText userName = (EditText) findViewById(R.id.editText2);
-            EditText password = (EditText) findViewById(R.id.editText);
-            String userName1 = userName.getText().toString();
-            String password1 = password.getText().toString();
-
-            //String username = params[0];
-            //String password = params[1];
+            String username = params[0];
+            String password = params[1];
             BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
             try {
-                Mitarbeiter myMitarbeiter = myApp.getMitarbeiterverwaltungService().mitarbeiterLogin(userName1, password1);
-                return myMitarbeiter;
+                Mitarbeiter mitarbeiter = myApp.getMitarbeiterverwaltungService().mitarbeiterLogin(username, password);
+                return mitarbeiter;
             } catch (InvalidLoginException e) {
                 e.printStackTrace();
             }
@@ -206,12 +166,10 @@ public class MainActivity extends ActionBarActivity {
                 toast.show();
             }
         }
+    }
+}
 
-    }*/
-<<<<<<< HEAD
 
-=======
->>>>>>> d1c24c7fc1390a68004a850462e84deff1df9241
 
 
 

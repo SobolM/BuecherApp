@@ -29,6 +29,11 @@ public class Mitarbeiter {
         this.passwort = passwort;
     }
 
+    public Mitarbeiter(String benutzername, String passwort){
+        this.benutzername = benutzername;
+        this.passwort = passwort;
+    }
+
     public int getId() {
         return id;
     }

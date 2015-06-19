@@ -61,7 +61,5 @@ public class KundenUeberblickActivity extends ActionBarActivity {
 
     }
 
-    public void neuesBuch(View v) throws NoSessionException{
-        buchverwaltungService.getBuchMitIdEins();
-    }
+
 }
