@@ -1,9 +1,9 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,13 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import de.fh_muenster.buecherwelt.MitarbeiterLogin;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
-import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
-import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -32,10 +29,10 @@ public class MainActivity extends ActionBarActivity {
 
 
         //LÖSCH MICH !
-        /*if (Build.VERSION.SDK_INT > 9) {
+        if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
-        }*/
+        }
 
         BuecherweltApplication myApp = new BuecherweltApplication();
 
@@ -133,9 +130,9 @@ View.OnClickListener eventHandler = new View.OnClickListener() {
 
         //if(userName1.equals("admin") && !password1.equals("adminPasswort"))
         //{
-            LoginTask loginTask = new LoginTask(ausloeser.getContext());
+            //LoginTask loginTask = new LoginTask(ausloeser.getContext());
             //Proxy asynchron aufrufen
-            loginTask.execute(userName1, password1);
+            //loginTask.execute(userName1, password1);
         //}
         //else
         /*{
@@ -148,7 +145,7 @@ View.OnClickListener eventHandler = new View.OnClickListener() {
     }
 };
 
-    private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
+    /*private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
         private Context context;
 
         //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
@@ -206,7 +203,7 @@ View.OnClickListener eventHandler = new View.OnClickListener() {
             }
         }
 
-    }
+    }*/
 
 
 }

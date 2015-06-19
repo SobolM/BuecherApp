@@ -198,6 +198,7 @@
     <string name="speichern">Speichern</string>
     <string name="title_activity_ausgw_buch_activiy">AusgwBuchActiviy</string>
     <string name="title_activity_buch">BuchActivity</string>
+    <string name="title_activity_daten__mitarbeiter">Daten_Mitarbeiter</string>
     <string name="title_activity_display2">Display 2</string>
     <string name="title_activity_kunden">KundenActivity</string>
     <string name="title_activity_kunden_ueberblick">KundenUeberblickActivity</string>
