@@ -95,6 +95,10 @@
             android:name=".buecherweltAndroid.BuchDetailSicht"
             android:label="@string/title_activity_buch_detail_sicht" >
         </activity>
+        <activity
+            android:name=".buecherweltAndroid.NeueAusleihungHinzufuegen"
+            android:label="@string/title_activity_neue_ausleihung_hinzufuegen" >
+        </activity>
     </application>
 
 </manifest>

@@ -4,23 +4,29 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import de.fh_muenster.buecherwelt.R;
 
-public class BuchDetailSicht extends ActionBarActivity {
+public class BuchDetailSichtBearbeiten extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buch_detail_sicht);
+        setContentView(R.layout.activity_buch_detail_sichtBearbeiten);
 
-        TextView TextView13 = (TextView) findViewById(R.id.textView13);
-        TextView TextView15 = (TextView) findViewById(R.id.textView15);
-        TextView TextView28 = (TextView) findViewById(R.id.textView28);
-        TextView TextView43 = (TextView) findViewById(R.id.textView43);
+        final EditText EditText8 = (EditText) findViewById(R.id.editText8);
+        final EditText EditText9 = (EditText) findViewById(R.id.editText9);
+        final EditText EditText10 = (EditText) findViewById(R.id.editText10);
+        final EditText EditText16 = (EditText) findViewById(R.id.editText16);
+
 
         final Bundle bu = this.getIntent().getExtras();
+
+        EditText8.setText(bu.getString("Titel").toString());
+        EditText9.setText(bu.getString("Autor").toString());
+        EditText10.setText(bu.getString("Erscheinungsjahr").toString());
+        EditText16.setText(bu.getString("Anzahl").toString());
 
 
     }

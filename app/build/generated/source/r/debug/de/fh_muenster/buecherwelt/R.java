@@ -1495,7 +1495,7 @@ containing a value of this type.
         public static final int activity_ausgw_buch_activiy=0x7f040017;
         public static final int activity_ausleihkonto=0x7f040018;
         public static final int activity_buch=0x7f040019;
-        public static final int activity_buch_detail_sicht=0x7f04001a;
+        public static final int activity_buch_detail_sichtBearbeiten =0x7f04001a;
         public static final int activity_buecher_liste=0x7f04001b;
         public static final int activity_daten__mitarbeiter=0x7f04001c;
         public static final int activity_kunden=0x7f04001d;

@@ -109,7 +109,7 @@ public class buecherListe extends ActionBarActivity {
                         public void onItemClick(AdapterView<?> parent, View view,
                                                 int position, long id) {
 
-                            Intent i = new Intent(buecherListe.this, AusgwBuchActiviy.class);
+                            Intent i = new Intent(buecherListe.this, BuchDetailSicht.class);
                             i.putExtra("Id",adapter.getItem(position).getId());
                             i.putExtra("Titel",adapter.getItem(position).getTitel());
                             i.putExtra("Autor",adapter.getItem(position).getAutor());
