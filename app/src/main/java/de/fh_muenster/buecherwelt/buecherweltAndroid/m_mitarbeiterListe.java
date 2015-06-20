@@ -2,6 +2,7 @@ package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -11,28 +12,30 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import de.fh_muenster.buecherwelt.R;
+import de.fh_muenster.buecherwelt.buecherwelt.Buch;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class m_mitarbeiterListe extends ActionBarActivity {
 
+    private static final String NAMESPACE = "http://webservices.bw.de/";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Mitarbeiterverwaltung";
+    private static final String METHOD_NAME = "getAllMitarbeiter";
+    private static final String TAG = GetMitarbeiterListeTask.class.getName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_m_mitarbeiter_liste);
 
-
-        try {
-            MitarbeiterTask(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        GetMitarbeiterListeTask mitarbeiterListeTask = new GetMitarbeiterListeTask(this);
+        mitarbeiterListeTask.execute();
 
     }
 
@@ -60,52 +63,71 @@ public class m_mitarbeiterListe extends ActionBarActivity {
 
     private Context context;
 
-    //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
-    //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
-    public List<Mitarbeiter> MitarbeiterTask(Context context) throws Exception {
-        this.context = context;
+    private class GetMitarbeiterListeTask extends AsyncTask<Void, Void, List<Mitarbeiter>> {
+        private Context context;
 
-        final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+        //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
+        //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
+        public GetMitarbeiterListeTask(Context context) {
+            this.context = context;
+        }
 
-        //Liste holen und Adapter sowie OnClickListener anhängen
-        final ListView listView = (ListView) findViewById(R.id.listView2);
-        final ArrayAdapter<Mitarbeiter> adapter;
+        //@Override
+        protected List<Mitarbeiter> doInBackground(Void... params) {
 
-        List<Mitarbeiter> alleMitarbeiter = myApp.getMitarbeiterverwaltungService().getAllMitarbeiter();
-        adapter = new ArrayAdapter<Mitarbeiter>(context,android.R.layout.simple_list_item_1,alleMitarbeiter);
-        listView.setAdapter(adapter);
-        alleMitarbeiter.add(myApp.getMitarbeiter());
-        //adapter.notifyDataSetChanged();
-        try {
-            //Aufruf zum "Server" (getALLMitarbeiter) im dritten Parameter!
-            //adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, alleMitarbeiter);
-            //listView.setAdapter(adapter);
-            //Mitarbeiter mitarbeiter = null;
-            //mitarbeiter = myApp.getMitarbeiterverwaltungService().getMitarbeiter();
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    final TextView textView17 = (TextView) findViewById(R.id.textView17);
-                    try {
+            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
 
-                        textView17.setText(myApp.getMitarbeiterverwaltungService().getMitarbeiter().getNachname());
-                    } catch (NoSessionException e) {
-                        e.printStackTrace();
-                    }
+            try {
+                List<Mitarbeiter> mitarbeiterList  = myApp.getMitarbeiterverwaltungService().getAllMitarbeiter();
+                return mitarbeiterList;
+            } catch (NoSessionException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-                    Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
-                    startActivity(i);
+        //Vorsicht bei onPostExecute, onProgressUpdate und onPreExecute!
+        //Diese drei Methoden werden im UI-Thread ausgeführt, lediglich doInBackground ist wirklich "asynchron".
+        protected void onPostExecute(List<Mitarbeiter> myList) {
+            if (myList != null) {
+                final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+
+                final ListView listView = (ListView) findViewById(R.id.listView2);
+                final ArrayAdapter<Mitarbeiter> adapter;
+                try {
+                    //Aufruf zum "Server" (getMyAccounts) im dritten Parameter!
+                    adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, myList);
+                    listView.setAdapter(adapter);
+
+
+                    //OnItemClickListener zu der Liste hinzufügen. Erst jetzt ist der ArrayAdapter bekannt, der für den TransferTask erforderlich ist.
+                    //Die Referenz auf den Adapter könnte auch über andere Wege abgespeichert werden, z.B. über eine Klassenvariable etc
+                    //--> damit könnte der nachfolgende OnItemClickListener ausgelagert werden.
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view,
+                                                int position, long id) {
+
+                            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
+
+
+                            Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
+                            startActivity(i);
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
-            });
+            } else {
+                //Toast anzeigen
+                CharSequence text = "Auswählen des Mitarbeiters fehlgeschlagen!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
 
-            return alleMitarbeiter;
-        } catch (Exception e) {
-            e.printStackTrace();
+            }
         }
-        return null;
-
     }
 
 }

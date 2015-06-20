@@ -22,14 +22,11 @@ public class Buch {
         this. anzahl = anzahl;
     }
 
-    public Buch( String titel, String autor, int erscheinungsjahr, int anzahl){
+    public Buch(int id, String titel){
         super();
-
         this.titel = titel;
-        this.autor = autor;
-        this.erscheinungsjahr = erscheinungsjahr;
-        this. anzahl = anzahl;
     }
+
     public String getTitel() {
         return titel;
     }

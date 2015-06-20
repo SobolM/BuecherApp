@@ -74,11 +74,11 @@
             android:label="@string/title_activity_m_mitarbeiter_liste" >
         </activity>
         <activity
-            android:name="de.fh_muenster.buecherwelt.MitarbeiterLogin"
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.MitarbeiterLogin"
             android:label="@string/title_activity_mitarbeiter_login" >
         </activity>
         <activity
-            android:name="de.fh_muenster.buecherwelt.Daten_Mitarbeiter"
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.Daten_Mitarbeiter"
             android:label="@string/title_activity_daten__mitarbeiter" >
         </activity>
         <activity

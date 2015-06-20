@@ -10,6 +10,8 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
@@ -43,23 +45,50 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
 
 
     @Override
-    public void neuesBuchHinzufuegen(String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException {
+    public void neuesBuchHinzufuegen(int id, String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException {
         Buch result = null;
         String METHOD_NAME = "neuesBuchHinzufuegen";
         SoapObject response = null;
        try {
             response = executeSoapAction(METHOD_NAME,  titel, autor, erscheinungsjahr, anzahl);
             Log.d(TAG, response.toString());
-            SoapPrimitive id = (SoapPrimitive) response.getProperty("id");
-            this.sessionId = Integer.valueOf(id.toString());
+            SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
+            this.sessionId = Integer.valueOf(sid.toString());
 
            if (sessionId != 0) {
-                result = new Buch( titel, autor, erscheinungsjahr, anzahl);
+                result = new Buch(id, titel, autor, erscheinungsjahr, anzahl);
             }
             else {
                 throw new NoSessionException("Please Login!");
             }
         } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+    }
+
+
+
+    @Override
+    public List<Buch> getAllBuecher() throws NoSessionException {
+        List<Buch> result = new ArrayList<Buch>();
+        String METHOD_NAME = "getAllBuecher";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME);
+            Log.d(TAG, response.toString());
+            //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
+            //this.sessionId = Integer.valueOf(sid.toString());
+
+            for (int i=1; i<response.getPropertyCount(); i++) {
+                SoapObject soapAccountEntry = (SoapObject) response.getProperty(i);
+                SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("id");
+                SoapPrimitive soapTitel = (SoapPrimitive) soapAccountEntry.getProperty("titel");
+                Buch buch = new Buch(Integer.valueOf(soapBuchId.toString()), soapTitel.toString());
+                result.add(buch);
+            }
+            return result;
+        }
+        catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }
     }
@@ -110,7 +139,7 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
 	        /* Get the web service response using the getResponse method of the SoapSerializationEnvelope object.
 	         * The result has to be cast to SoapPrimitive, the class used to encapsulate primitive types, or to SoapObject.
 	         */
-            result = envelope.getResponse();
+            result = envelope.bodyIn;
 
             if (result instanceof SoapFault) {
                 throw (SoapFault) result;

@@ -1,6 +1,7 @@
 package de.fh_muenster.buecherwelt.buecherwelt;
 
 import java.util.Date;
+import java.util.List;
 
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
@@ -9,7 +10,8 @@ import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
  */
 public interface BuchverwaltungService {
 
-    public void neuesBuchHinzufuegen(String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException;
+    public void neuesBuchHinzufuegen(int id, String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException;
 
+    public List<Buch> getAllBuecher() throws NoSessionException;
 
 }
