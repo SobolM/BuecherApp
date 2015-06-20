@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.fh_muenster.buecherwelt.R;
@@ -93,7 +92,6 @@ public class buecherListe extends ActionBarActivity {
         //Diese drei Methoden werden im UI-Thread ausgeführt, lediglich doInBackground ist wirklich "asynchron".
         protected void onPostExecute(List<Buch> myList) {
             if (myList != null) {
-                final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
 
                 final ListView listView = (ListView) findViewById(R.id.listView2);
                 final ArrayAdapter<Buch> adapter;
@@ -111,10 +109,12 @@ public class buecherListe extends ActionBarActivity {
                         public void onItemClick(AdapterView<?> parent, View view,
                                                 int position, long id) {
 
-                            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-
-
-                            Intent i = new Intent(view.getContext(), AusgwBuchActiviy.class);
+                            Intent i = new Intent(buecherListe.this, AusgwBuchActiviy.class);
+                            i.putExtra("Id",adapter.getItem(position).getId());
+                            i.putExtra("Titel",adapter.getItem(position).getTitel());
+                            i.putExtra("Autor",adapter.getItem(position).getAutor());
+                            i.putExtra("Erscheinungsjahr",adapter.getItem(position).getErscheinungsjahr());
+                            i.putExtra("Anzahl",adapter.getItem(position).getAnzahl());
                             startActivity(i);
                         }
                     });

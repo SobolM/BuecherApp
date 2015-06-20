@@ -97,6 +97,10 @@
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.Ausleihkonto"
             android:label="@string/title_activity_ausleihkonto" >
         </activity>
+        <activity
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.BuchDetailSicht"
+            android:label="@string/title_activity_buch_detail_sicht" >
+        </activity>
     </application>
 
 </manifest>

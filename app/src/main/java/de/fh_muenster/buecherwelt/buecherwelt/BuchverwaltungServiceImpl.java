@@ -10,7 +10,6 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,11 +78,14 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
             //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
 
-            for (int i=1; i<response.getPropertyCount(); i++) {
-                SoapObject soapAccountEntry = (SoapObject) response.getProperty(i);
+            for (int j = 1; j < response.getPropertyCount(); j++) {
+                SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
                 SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("id");
                 SoapPrimitive soapTitel = (SoapPrimitive) soapAccountEntry.getProperty("titel");
-                Buch buch = new Buch(Integer.valueOf(soapBuchId.toString()), soapTitel.toString());
+                SoapPrimitive soapAutor = (SoapPrimitive) soapAccountEntry.getProperty("autor");
+                SoapPrimitive soapJahr = (SoapPrimitive) soapAccountEntry.getProperty("erscheinungsjahr");
+                SoapPrimitive soapAnzahl = (SoapPrimitive) soapAccountEntry.getProperty("anzahl");
+                Buch buch = new Buch(Integer.valueOf(soapBuchId.toString()), soapTitel.toString(), soapAutor.toString(), Integer.valueOf(soapJahr.toString()), Integer.valueOf(soapAnzahl.toString()));
                 result.add(buch);
             }
             return result;
