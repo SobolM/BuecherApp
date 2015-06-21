@@ -146,7 +146,7 @@
     <!-- From: file:/home/user/workspace/Buecherwelt/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="Address">Straße+Hausnr.</string>
-    <string name="Ausleihen">Ausgeliehne Bücher:</string>
+    <string name="Ausleihen">Ausgeliehene Bücher:</string>
     <string name="Autor">Autor</string>
     <string name="Benutzerdaten_ändern">Benutzerdaten ändern</string>
     <string name="Benutzername">Benutzername</string>
@@ -217,6 +217,7 @@
     <string name="title_activity_mitarbeiter_activity">Mitarbeiter_activity</string>
     <string name="title_activity_mitarbeiter_bearbeiten">Mitarbeiter_bearbeiten</string>
     <string name="title_activity_mitarbeiter_login">MitarbeiterLogin</string>
+    <string name="title_activity_neue_ausleihung_hinzufuegen">NeueAusleihungHinzufuegen</string>
     <string name="title_activity_neuer_kunde">NeuerKundeActivity</string>
     <string name="title_activity_neues_buch">NeuesBuchActivity</string>
     <string name="title_activity_verwaltung">VerwaltungActivity</string>

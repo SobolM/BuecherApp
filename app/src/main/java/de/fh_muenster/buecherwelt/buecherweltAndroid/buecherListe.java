@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -95,10 +96,34 @@ public class buecherListe extends ActionBarActivity {
 
                 final ListView listView = (ListView) findViewById(R.id.listView2);
                 final ArrayAdapter<Buch> adapter;
+                final Button BuchHinzufügen = (Button) findViewById(R.id.buttonNeuesBuch);
                 try {
                     //Aufruf zum "Server" (getMyAccounts) im dritten Parameter!
                     adapter = new ArrayAdapter<Buch>(context, android.R.layout.simple_list_item_1, myList);
                     listView.setAdapter(adapter);
+                    // Damit wäre es möglich die Daten auch mit einem Button zu übergeben, hier jedoch nicht nötig, fiel mir erst später auf
+                    /*BuchHinzufügen.setOnClickListener(new View.OnClickListener()
+
+                    {
+                        public void onClick (View v){
+                        Intent intent = new Intent(buecherListe.this, BuchHinzufuegenzurBuchliste.class);
+                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view,
+                                                        int position, long id) {
+
+                                    intent.putExtra("Id", adapter.getItem(position).getId());
+                                    intent.putExtra("Titel", adapter.getItem(position).getTitel());
+                                    intent.putExtra("Autor", adapter.getItem(position).getAutor());
+                                    intent.putExtra("Erscheinungsjahr", adapter.getItem(position).getErscheinungsjahr());
+                                    intent.putExtra("Anzahl", adapter.getItem(position).getAnzahl());
+                                    startActivity(intent);
+                                }
+
+
+                            });
+                    }
+                    });*/
 
 
                     //OnItemClickListener zu der Liste hinzufügen. Erst jetzt ist der ArrayAdapter bekannt, der für den TransferTask erforderlich ist.
@@ -110,13 +135,15 @@ public class buecherListe extends ActionBarActivity {
                                                 int position, long id) {
 
                             Intent i = new Intent(buecherListe.this, BuchDetailSicht.class);
-                            i.putExtra("Id",adapter.getItem(position).getId());
-                            i.putExtra("Titel",adapter.getItem(position).getTitel());
-                            i.putExtra("Autor",adapter.getItem(position).getAutor());
-                            i.putExtra("Erscheinungsjahr",adapter.getItem(position).getErscheinungsjahr());
-                            i.putExtra("Anzahl",adapter.getItem(position).getAnzahl());
+                            i.putExtra("Id", adapter.getItem(position).getId());
+                            i.putExtra("Titel", adapter.getItem(position).getTitel());
+                            i.putExtra("Autor", adapter.getItem(position).getAutor());
+                            i.putExtra("Erscheinungsjahr", adapter.getItem(position).getErscheinungsjahr());
+                            i.putExtra("Anzahl", adapter.getItem(position).getAnzahl());
                             startActivity(i);
                         }
+
+
                     });
                 } catch (Exception e) {
                     e.printStackTrace();

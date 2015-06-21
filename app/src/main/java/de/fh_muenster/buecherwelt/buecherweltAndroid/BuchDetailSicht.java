@@ -22,6 +22,10 @@ public class BuchDetailSicht extends ActionBarActivity {
 
         final Bundle bu = this.getIntent().getExtras();
 
+        TextView13.setText(bu.getString("Titel").toString());
+        TextView15.setText(bu.getString("Autor").toString());
+        TextView28.setText(bu.getString("Erscheinungsjahr").toString());
+        TextView43.setText(bu.getString("Anzahl").toString());
 
     }
 

@@ -8,12 +8,12 @@ import android.widget.EditText;
 
 import de.fh_muenster.buecherwelt.R;
 
-public class BuchDetailSichtBearbeiten extends ActionBarActivity {
+public class BuchHinzufuegenzurBuchliste extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buch_detail_sichtBearbeiten);
+        setContentView(R.layout.buch_hinzufuegen_zur_buecherliste);
 
         final EditText EditText8 = (EditText) findViewById(R.id.editText8);
         final EditText EditText9 = (EditText) findViewById(R.id.editText9);
