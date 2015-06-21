@@ -21,11 +21,6 @@ import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class BuchActivity extends ActionBarActivity {
 
-    private static final String NAMESPACE = "http://webservices.bw.de/";
-    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Buchverwaltung";
-    private static final String METHOD_NAME = "neuesBuchHinzufuegen";
-    private static final String TAG = NeuesBuchTask.class.getName();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

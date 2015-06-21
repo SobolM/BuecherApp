@@ -24,11 +24,6 @@ import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class m_mitarbeiterListe extends ActionBarActivity {
 
-    private static final String NAMESPACE = "http://webservices.bw.de/";
-    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Mitarbeiterverwaltung";
-    private static final String METHOD_NAME = "getAllMitarbeiter";
-    private static final String TAG = GetMitarbeiterListeTask.class.getName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +56,6 @@ public class m_mitarbeiterListe extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private Context context;
-
     private class GetMitarbeiterListeTask extends AsyncTask<Void, Void, List<Mitarbeiter>> {
         private Context context;
 
@@ -90,44 +83,42 @@ public class m_mitarbeiterListe extends ActionBarActivity {
         //Diese drei Methoden werden im UI-Thread ausgeführt, lediglich doInBackground ist wirklich "asynchron".
         protected void onPostExecute(List<Mitarbeiter> myList) {
             if (myList != null) {
-                final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
 
                 final ListView listView = (ListView) findViewById(R.id.listView2);
                 final ArrayAdapter<Mitarbeiter> adapter;
                 try {
-                    //Aufruf zum "Server" (getMyAccounts) im dritten Parameter!
+                    //Aufruf zum "Server" (myList) im dritten Parameter!
                     adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, myList);
                     listView.setAdapter(adapter);
 
+                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view,
+                                                    int position, long id) {
+                                Intent i = new Intent(m_mitarbeiterListe.this, Daten_Mitarbeiter.class);
+                                i.putExtra("ID",adapter.getItem(position).getId());
+                                i.putExtra("Vorname", adapter.getItem(position).getVorname());
+                                i.putExtra("Nachname",adapter.getItem(position).getNachname());
+                                i.putExtra("Ort",adapter.getItem(position).getOrt());
+                                i.putExtra("Strasse",adapter.getItem(position).getStrasse());
+                                i.putExtra("Hausnummer",adapter.getItem(position).getHausnummer());
+                                i.putExtra("Email",adapter.getItem(position).getEmail());
+                                i.putExtra("Benutzername",adapter.getItem(position).getBenutzername());
+                                i.putExtra("PLZ",adapter.getItem(position).getPlz());
 
-                    //OnItemClickListener zu der Liste hinzufügen. Erst jetzt ist der ArrayAdapter bekannt, der für den TransferTask erforderlich ist.
-                    //Die Referenz auf den Adapter könnte auch über andere Wege abgespeichert werden, z.B. über eine Klassenvariable etc
-                    //--> damit könnte der nachfolgende OnItemClickListener ausgelagert werden.
-                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view,
-                                                int position, long id) {
-
-                            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-
-
-                            Intent i = new Intent(view.getContext(), Daten_Mitarbeiter.class);
-                            startActivity(i);
-                        }
-                    });
+                                startActivity(i);
+                            }
+                        });
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             } else {
                 //Toast anzeigen
                 CharSequence text = "Auswählen des Mitarbeiters fehlgeschlagen!";
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-
             }
         }
     }
-
 }

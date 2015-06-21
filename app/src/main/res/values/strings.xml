@@ -50,4 +50,9 @@
     <string name="title_activity_buecherwelt_liste">buecherweltListe</string>
     <string name="title_activity_buecher_liste">buecherListe</string>
     <string name="title_activity_ausleihkonto">Ausleihkonto</string>
+    <string name="title_activity_buch_detail_sicht">BuchDetailSicht</string>
+    <string name="DetailBuch">Buch Informationen:</string>
+    <string name="BuchTitel">Titel</string>
+    <string name="Autor">Autor</string>
+    <string name="Erscheinungsjahr">Erscheinungsjahr</string>
 </resources>

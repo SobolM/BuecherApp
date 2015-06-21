@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
+import de.fh_muenster.buecherwelt.buecherwelt.Kunde;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 
@@ -24,28 +25,14 @@ Muss beim login übergehen in die KundeneinsichtActivity
  */
 public class MainActivity extends ActionBarActivity {
 
-    TextView mainTextView;
-    private static final String NAMESPACE = "http://webservices.bw.de/";
-    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Mitarbeiterverwaltung";
-    private static final String METHOD_NAME = "loginMitarbeiter";
-    private static final String TAG = LoginTask.class.getName();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        //LÖSCH MICH !
-        /*if (Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }*/
-
         //Button OnClickListener setzen (Deklaration des Eventhandlers siehe unten)
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(eventHandler);
-
     }
 
 
@@ -85,9 +72,6 @@ public class MainActivity extends ActionBarActivity {
             String userName1 = userName.getText().toString();
             String password1 = password.getText().toString();
 
-            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-
-
             if(ausloeser.getId() == R.id.button)
             {
                 LoginTask loginTask = new LoginTask(ausloeser.getContext());
@@ -107,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
     };
 
 
-    private class LoginTask extends AsyncTask<String, Integer, Mitarbeiter> {
+    private class LoginTask extends AsyncTask<String, Integer, Kunde> {
 
 
         private Context context;
@@ -119,15 +103,15 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @Override
-        protected Mitarbeiter doInBackground(String... params) {
+        protected Kunde doInBackground(String... params) {
             if(params.length != 2)
                 return null;
             String username = params[0];
             String password = params[1];
             BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
             try {
-                Mitarbeiter mitarbeiter = myApp.getMitarbeiterverwaltungService().mitarbeiterLogin(username, password);
-                return mitarbeiter;
+                Kunde kunde = myApp.getKundenverwaltungService().kundenLogin(username, password);
+                return kunde;
             } catch (InvalidLoginException e) {
                 e.printStackTrace();
             }
@@ -138,11 +122,11 @@ public class MainActivity extends ActionBarActivity {
             //wird in diesem Beispiel nicht verwendet
         }
 
-        protected void onPostExecute(Mitarbeiter result) {
+        protected void onPostExecute(Kunde result) {
             if (result != null) {
                 //erfolgreich eingeloggt
                 BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-                myApp.setMitarbeiter(result);
+                myApp.setKunde(result);
 
                 //Toast anzeigen
                 CharSequence text = "Login erfolgreich! Angemeldeter Benutzername: " + result.getBenutzername();
@@ -151,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
                 toast.show();
 
                 //Nächste Activity anzeigen
-                Intent i = new Intent(context, Mitarbeiter_activity.class);
+                Intent i = new Intent(context, KundeneinsichtActivity.class);
                 startActivity(i);
             } else {
                 //Toast anzeigen

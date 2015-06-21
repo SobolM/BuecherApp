@@ -35,25 +35,12 @@
         android:layout_toEndOf="@+id/textView9"
         android:onClick="neuerKunde" />
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/button5"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="82dp"
-        android:layout_toLeftOf="@+id/button5"
-        android:layout_toStartOf="@+id/button5"></TableLayout>
-
-    <Button
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back"
-        android:id="@+id/button15"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/listView3"
+        android:layout_below="@+id/button5"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="41dp"
-        android:onClick="kunden" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

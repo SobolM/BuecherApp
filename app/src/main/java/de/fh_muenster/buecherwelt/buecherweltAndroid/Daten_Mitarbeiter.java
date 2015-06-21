@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import de.fh_muenster.buecherwelt.R;
 
@@ -14,6 +15,16 @@ public class Daten_Mitarbeiter extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daten__mitarbeiter);
+
+        final TextView textView17 = (TextView) findViewById(R.id.textView17);
+        final TextView textView23 = (TextView)findViewById(R.id.textView23);
+        final TextView textView24 = (TextView) findViewById(R.id.textView24);
+
+        final Bundle bu = this.getIntent().getExtras();
+
+
+        textView17.setText(bu.getString("ID").toString());
+        textView23.setText(bu.getString("Vorname").toString());
     }
 
 

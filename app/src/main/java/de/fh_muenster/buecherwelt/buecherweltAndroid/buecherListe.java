@@ -19,14 +19,10 @@ import java.util.List;
 import de.fh_muenster.buecherwelt.R;
 import de.fh_muenster.buecherwelt.buecherwelt.Buch;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
+import de.fh_muenster.buecherwelt.buecherwelt.Kunde;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 public class buecherListe extends ActionBarActivity {
-
-    private static final String NAMESPACE = "http://webservices.bw.de/";
-    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Buchverwaltung";
-    private static final String METHOD_NAME = "getAllBuecher";
-    private static final String TAG = GetBuecherListeTask.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +32,6 @@ public class buecherListe extends ActionBarActivity {
         GetBuecherListeTask getBuecherListeTask = new GetBuecherListeTask(this);
         getBuecherListeTask.execute();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -93,28 +88,22 @@ public class buecherListe extends ActionBarActivity {
         //Diese drei Methoden werden im UI-Thread ausgeführt, lediglich doInBackground ist wirklich "asynchron".
         protected void onPostExecute(List<Buch> myList) {
             if (myList != null) {
-                final BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
 
                 final ListView listView = (ListView) findViewById(R.id.listView2);
                 final ArrayAdapter<Buch> adapter;
                 try {
                     //Aufruf zum "Server" (getMyAccounts) im dritten Parameter!
                     adapter = new ArrayAdapter<Buch>(context, android.R.layout.simple_list_item_1, myList);
-                    listView.setAdapter(adapter);
+                    listView.setAdapter(adapter) ;
 
 
-                    //OnItemClickListener zu der Liste hinzufügen. Erst jetzt ist der ArrayAdapter bekannt, der für den TransferTask erforderlich ist.
-                    //Die Referenz auf den Adapter könnte auch über andere Wege abgespeichert werden, z.B. über eine Klassenvariable etc
-                    //--> damit könnte der nachfolgende OnItemClickListener ausgelagert werden.
                     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view,
                                                 int position, long id) {
 
-                            BuecherweltApplication myApp = (BuecherweltApplication) getApplication();
-
-
-                            Intent i = new Intent(view.getContext(), AusgwBuchActiviy.class);
+                            Intent i = new Intent(view.getContext(), BuchDetailSicht.class);
+                            i.putExtra("Name",adapter.getItem(position).getTitel());
                             startActivity(i);
                         }
                     });

@@ -29,6 +29,11 @@ public class Kunde {
         this.passwort = passwort;
     }
 
+    public Kunde(String benutzername, String passwort){
+        this.benutzername = benutzername;
+        this.passwort = passwort;
+    }
+
     public int getId() {
         return id;
     }

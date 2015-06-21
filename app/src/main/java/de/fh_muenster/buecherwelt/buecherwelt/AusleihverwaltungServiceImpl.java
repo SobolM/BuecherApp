@@ -10,49 +10,78 @@ import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Observable;
-import java.util.Vector;
 
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 /**
- * Created by user on 11.06.15.
+ * Created by user on 20.06.15.
  */
-public class BuchverwaltungServiceImpl implements BuchverwaltungService{
+public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
+
 
     /**
      * Namespace is the targetNamespace in the WSDL.
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Buchverwaltung";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Ausleihverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.
      */
-    private static final String TAG = BuchverwaltungServiceImpl.class.getName();
+    private static final String TAG = AusleihverwaltungServiceImpl.class.getName();
 
     /**
      * sessionId contains the session id delivered from the server.
      */
     private int sessionId;
 
-    @Override
-    public void neuesBuchHinzufuegen(int id, String titel, String autor, int erscheinungsjahr, int anzahl) throws NoSessionException {
-        Buch result = null;
-        String METHOD_NAME = "neuesBuchHinzufuegen";
+
+    public List<Ausleihe> getAllAusleihen() throws NoSessionException{
+        List<Ausleihe> result = new ArrayList<Ausleihe>();
+        String METHOD_NAME = "getAllAusleihen";
         SoapObject response = null;
-       try {
-            response = executeSoapAction(METHOD_NAME,  titel, autor, erscheinungsjahr, anzahl);
-            //Log.d(TAG, response.toString());
-            //SoapObject sid = (SoapObject) response.getProperty("id");
+        try {
+            response = executeSoapAction(METHOD_NAME);
+
+            Log.d(TAG, response.toString());
+            //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
 
-           if (response != null) {
-                result = new Buch(id, titel, autor, erscheinungsjahr, anzahl);
+            for (int j = 1; j < response.getPropertyCount(); j++) {
+                SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
+                SoapPrimitive soapAusleiheId = (SoapPrimitive) soapAccountEntry.getProperty("id");
+                SoapPrimitive soapDate = (SoapPrimitive) soapAccountEntry.getProperty("leihdatum");
+                SoapPrimitive soapKundenId = (SoapPrimitive) soapAccountEntry.getProperty("kundenId");
+                SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("buchId");
+
+                Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), new Date(response.getPrimitivePropertySafelyAsString("leihdatum")), Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+                result.add(ausleihe);
+            }
+            return result;
+        }
+        catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+
+    }
+
+    @Override
+    public void neuesAusleiheHinzufuegen(int id, Date leihdatum, int kundenId, int buchId) throws NoSessionException {
+        Ausleihe result = null;
+        String METHOD_NAME = "neuesBuchHinzufuegen";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME,  leihdatum, kundenId, buchId);
+            Log.d(TAG, response.toString());
+            //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
+            //this.sessionId = Integer.valueOf(sid.toString());
+
+            if (sessionId != 0) {
+                result = new Ausleihe(id, leihdatum, kundenId, buchId);
             }
             else {
                 throw new NoSessionException("Please Login!");
@@ -62,36 +91,38 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
         }
     }
 
-
-
-    @Override
-    public List<Buch> getAllBuecher() throws NoSessionException {
-        List<Buch> result = new ArrayList<Buch>();
-        String METHOD_NAME = "getAllBuecher";
+    public List<Ausleihe> getAusleihenByKundenId(int id) throws NoSessionException{
+        List<Ausleihe> result = new ArrayList<Ausleihe>();
+        String METHOD_NAME = "getAusleihenByKundenId";
         SoapObject response = null;
         try {
-            response = executeSoapAction(METHOD_NAME);
+            response = executeSoapAction(METHOD_NAME, 2);
 
-            Log.d(TAG, response.toString());
+            //Log.d(TAG, response.toString());
             //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
-
+            if(response == null){
+                return null;
+            }else {
                 for (int j = 1; j < response.getPropertyCount(); j++) {
                     SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
-                    SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("id");
-                    SoapPrimitive soapTitel = (SoapPrimitive) soapAccountEntry.getProperty("titel");
-                    SoapPrimitive soapAutor = (SoapPrimitive) soapAccountEntry.getProperty("autor");
-                    SoapPrimitive soapJahr = (SoapPrimitive) soapAccountEntry.getProperty("erscheinungsjahr");
-                    SoapPrimitive soapAnzahl = (SoapPrimitive) soapAccountEntry.getProperty("anzahl");
-                    Buch buch = new Buch(Integer.valueOf(soapBuchId.toString()), soapTitel.toString(), soapAutor.toString(), Integer.valueOf(soapJahr.toString()), Integer.valueOf(soapAnzahl.toString()));
-                    result.add(buch);
+                    SoapPrimitive soapAusleiheId = (SoapPrimitive) soapAccountEntry.getProperty("id");
+                    SoapPrimitive soapDate = (SoapPrimitive) soapAccountEntry.getProperty("leihdatum");
+                    SoapPrimitive soapKundenId = (SoapPrimitive) soapAccountEntry.getProperty("kundenId");
+                    SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("buchId");
+
+                    Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), new Date(response.getPrimitivePropertySafelyAsString("leihdatum")), Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+                    result.add(ausleihe);
+                }
+                return result;
             }
-            return result;
         }
         catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }
+
     }
+
 
 
     /**
@@ -139,7 +170,7 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
 	        /* Get the web service response using the getResponse method of the SoapSerializationEnvelope object.
 	         * The result has to be cast to SoapPrimitive, the class used to encapsulate primitive types, or to SoapObject.
 	         */
-            result = envelope.bodyIn;
+            result = envelope.getResponse();
 
             if (result instanceof SoapFault) {
                 throw (SoapFault) result;
@@ -156,3 +187,5 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
         return (SoapObject) result;
     }
 }
+
+

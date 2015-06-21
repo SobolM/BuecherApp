@@ -6,11 +6,14 @@ import org.ksoap2.HeaderProperty;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.SoapFault;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import de.fh_muenster.buecherwelt.buecherwelt.exceptions.InvalidLoginException;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
 
 /**
@@ -33,7 +36,33 @@ public class KundenverwaltungServiceImpl implements KundenverwaltungService{
     /**
      * sessionId contains the session id delivered from the server.
      */
-    private int sessionId;
+
+
+    int sessionId;
+
+    @Override
+    public Kunde kundenLogin(String benutzername, String passwort) throws InvalidLoginException {
+        String METHOD_NAME = "loginKunde";
+        SoapObject response = null;
+        Kunde result = null;
+        try {
+            response = executeSoapAction(METHOD_NAME, benutzername, passwort);
+            Log.d(TAG, response.toString());
+            SoapPrimitive id = (SoapPrimitive) response.getProperty("id");
+            this.sessionId = Integer.valueOf(id.toString());
+
+            if (sessionId != 0) {
+
+                result = new Kunde(benutzername, passwort);
+                return result;
+            }
+            else {
+                throw new InvalidLoginException("Login not successful!");
+            }
+        } catch (SoapFault e) {
+            throw new InvalidLoginException(e.getMessage());
+        }
+    }
 
 
 
@@ -68,6 +97,43 @@ public class KundenverwaltungServiceImpl implements KundenverwaltungService{
                 throw new NoSessionException("Please Login!");
             }
         } catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Kunde> getAllKunden() throws NoSessionException {
+        List<Kunde> result = new ArrayList<Kunde>();
+        String METHOD_NAME = "getAllKunden";
+        SoapObject response = null;
+        try {
+
+            response = executeSoapAction(METHOD_NAME);
+            Log.d(TAG, response.toString());
+            //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
+            //this.sessionId = Integer.valueOf(sid.toString());
+
+
+            SoapPrimitive test = (SoapPrimitive) response.getProperty("id");
+            SoapPrimitive testhaus = (SoapPrimitive) response.getProperty("hausnummer");
+            int id = Integer.valueOf(test.toString());
+            String vorname = response.getPrimitivePropertySafelyAsString("vorname");
+            String nachname = response.getPrimitivePropertySafelyAsString("nachname");
+            String plz = response.getPrimitivePropertySafelyAsString("plz");
+            String ort = response.getPrimitivePropertySafelyAsString("ort");
+            String strasse = response.getPrimitivePropertySafelyAsString("strasse");
+            int hausnummer = Integer.valueOf(testhaus.toString());
+            String email = response.getPrimitivePropertySafelyAsString("email");
+            String benutzername = response.getPrimitivePropertySafelyAsString("benutzername");
+            String passwort = response.getPrimitivePropertySafelyAsString("passwort");
+            Kunde kunde = new Kunde(id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
+
+            result.add(kunde);
+
+
+            return result;
+        }
+        catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());
         }
     }

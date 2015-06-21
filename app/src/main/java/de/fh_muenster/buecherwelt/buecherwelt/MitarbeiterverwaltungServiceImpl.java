@@ -91,18 +91,33 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
         String METHOD_NAME = "getAllMitarbeiter";
         SoapObject response = null;
         try {
+
             response = executeSoapAction(METHOD_NAME);
             Log.d(TAG, response.toString());
             //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
 
-            for (int i=1; i<response.getPropertyCount(); i++) {
-                //SoapObject soapAccountEntry = (SoapObject) response.getProperty(i);
+            for (int j = 1; j < response.getPropertyCount(); j++) {
+                //SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
+
+                SoapPrimitive test = (SoapPrimitive) response.getProperty("id");
+                SoapPrimitive testhaus = (SoapPrimitive) response.getProperty("hausnummer");
+                int id = Integer.valueOf(test.toString());
+                String vorname = response.getPrimitivePropertySafelyAsString("vorname");
+                String nachname = response.getPrimitivePropertySafelyAsString("nachname");
+                String plz = response.getPrimitivePropertySafelyAsString("plz");
+                String ort = response.getPrimitivePropertySafelyAsString("ort");
+                String strasse = response.getPrimitivePropertySafelyAsString("strasse");
+                int hausnummer = Integer.valueOf(testhaus.toString());
+                String email = response.getPrimitivePropertySafelyAsString("email");
                 String benutzername = response.getPrimitivePropertySafelyAsString("benutzername");
                 String passwort = response.getPrimitivePropertySafelyAsString("passwort");
-                Mitarbeiter mitarbeiter = new Mitarbeiter(benutzername, passwort);
+                Mitarbeiter mitarbeiter = new Mitarbeiter(id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
+
                 result.add(mitarbeiter);
             }
+
+
             return result;
         }
         catch (SoapFault e) {

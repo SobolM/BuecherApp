@@ -147,18 +147,22 @@
     <eat-comment/>
     <string name="Address">Straße+Hausnr.</string>
     <string name="Ausleihen">Ausgeliehne Bücher:</string>
+    <string name="Autor">Autor</string>
     <string name="Benutzerdaten_ändern">Benutzerdaten ändern</string>
     <string name="Benutzername">Benutzername</string>
     <string name="Books">Bücher</string>
     <string name="Bplus">Buch hinzufügen</string>
+    <string name="BuchTitel">Titel</string>
     <string name="Button_Login">Login</string>
     <string name="Bücherwelt">Bücherwelt</string>
     <string name="C">Kunden</string>
     <string name="C_edit">Kunde bearbeiten</string>
     <string name="C_seit">Kunde seit:</string>
     <string name="Customer">Kunden:</string>
+    <string name="DetailBuch">Buch Informationen:</string>
     <string name="Einsehen">Leihliste einsehen</string>
     <string name="Employee">Mitarbeiter</string>
+    <string name="Erscheinungsjahr">Erscheinungsjahr</string>
     <string name="FristName">Vorname</string>
     <string name="Hnr">Hausnummer</string>
     <string name="KundenDatenÄndern">Meine Daten ändern:</string>
@@ -200,6 +204,7 @@
     <string name="title_activity_ausgw_buch_activiy">AusgwBuchActiviy</string>
     <string name="title_activity_ausleihkonto">Ausleihkonto</string>
     <string name="title_activity_buch">BuchActivity</string>
+    <string name="title_activity_buch_detail_sicht">BuchDetailSicht</string>
     <string name="title_activity_buecher_liste">buecherListe</string>
     <string name="title_activity_buecherwelt_liste">buecherweltListe</string>
     <string name="title_activity_daten__mitarbeiter">Daten_Mitarbeiter</string>
