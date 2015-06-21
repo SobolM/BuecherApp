@@ -1,7 +1,7 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -19,12 +19,28 @@ public class Daten_Mitarbeiter extends ActionBarActivity {
         final TextView textView17 = (TextView) findViewById(R.id.textView17);
         final TextView textView23 = (TextView)findViewById(R.id.textView23);
         final TextView textView24 = (TextView) findViewById(R.id.textView24);
+        final TextView textView37 = (TextView) findViewById(R.id.textView37);
+        final TextView textView38 = (TextView) findViewById(R.id.textView38);
+        final TextView textView39 = (TextView) findViewById(R.id.textView39);
+        final TextView textView40 = (TextView) findViewById(R.id.textView40);
+        final TextView textView41 = (TextView) findViewById(R.id.textView41);
+        final TextView textView42 = (TextView) findViewById(R.id.textView42);
+
 
         final Bundle bu = this.getIntent().getExtras();
 
 
         textView17.setText(bu.getString("ID").toString());
         textView23.setText(bu.getString("Vorname").toString());
+        textView24.setText(bu.getString("Nachname").toString());
+        textView37.setText(bu.getString("Ort").toString());
+        textView38.setText(bu.getString("Strasse").toString());
+        textView39.setText(bu.getString("Hausnummer").toString());
+        textView40.setText(bu.getString("Email").toString());
+        textView41.setText(bu.getString("Benutzername").toString());
+        textView42.setText(bu.getString("PLZ").toString());
+
+
     }
 
 

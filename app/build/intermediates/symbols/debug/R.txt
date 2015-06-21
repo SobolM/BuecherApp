@@ -334,8 +334,13 @@ int drawable abc_textfield_search_activated_mtrl_alpha 0x7f020030
 int drawable abc_textfield_search_default_mtrl_alpha 0x7f020031
 int drawable abc_textfield_search_material 0x7f020032
 int drawable ic_books 0x7f020033
+<<<<<<< HEAD
 int id Kunde 0x7f090064
 int id LoginButton 0x7f090091
+=======
+int id Kunde 0x7f090068
+int id LoginButton 0x7f090096
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int id action_bar 0x7f090031
 int id action_bar_activity_content 0x7f090000
 int id action_bar_container 0x7f090030
@@ -349,6 +354,7 @@ int id action_menu_presenter 0x7f090003
 int id action_mode_bar 0x7f09002e
 int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
+<<<<<<< HEAD
 int id action_settings 0x7f0900a1
 int id activity_chooser_view_content 0x7f090021
 int id always 0x7f090016
@@ -375,6 +381,38 @@ int id button7 0x7f09006a
 int id button8 0x7f09006b
 int id buttonNeuesBuch 0x7f090054
 int id buttonSpeichern 0x7f09006f
+=======
+int id action_settings 0x7f0900b3
+int id activity_chooser_view_content 0x7f090021
+int id always 0x7f090016
+int id beginning 0x7f090013
+int id button 0x7f090082
+int id button10 0x7f090048
+int id button102 0x7f09009c
+int id button11 0x7f09007c
+int id button12 0x7f09007d
+int id button13 0x7f09007e
+int id button14 0x7f090056
+int id button15 0x7f090067
+int id button16 0x7f0900ab
+int id button17 0x7f0900ac
+int id button18 0x7f090088
+int id button19 0x7f090089
+int id button2 0x7f090040
+int id button20 0x7f09008a
+int id button21 0x7f09008b
+int id button23 0x7f090093
+int id button24 0x7f090086
+int id button3 0x7f0900a9
+int id button4 0x7f0900aa
+int id button5 0x7f090066
+int id button6 0x7f0900a2
+int id button7 0x7f09006d
+int id button8 0x7f09006e
+int id button9 0x7f0900b2
+int id buttonNeuesBuch 0x7f090059
+int id buttonSpeichern 0x7f090074
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int id checkbox 0x7f090029
 int id collapseActionView 0x7f090017
 int id decor_content_parent 0x7f09002f
@@ -382,6 +420,7 @@ int id default_activity_button 0x7f090024
 int id dialog 0x7f09001b
 int id disableHome 0x7f09000c
 int id dropdown 0x7f09001c
+<<<<<<< HEAD
 int id editText 0x7f09007f
 int id editText10 0x7f090050
 int id editText11 0x7f090089
@@ -409,6 +448,39 @@ int id editTextLastName 0x7f090072
 int id editTextOrt 0x7f090075
 int id editTextPLZ 0x7f090074
 int id editTextPasswort 0x7f090093
+=======
+int id editText 0x7f090084
+int id editText10 0x7f0900b0
+int id editText103 0x7f09009d
+int id editText104 0x7f09009e
+int id editText105 0x7f09009f
+int id editText106 0x7f0900a0
+int id editText11 0x7f09008e
+int id editText12 0x7f09008f
+int id editText13 0x7f090090
+int id editText14 0x7f090091
+int id editText15 0x7f090092
+int id editText16 0x7f0900b1
+int id editText18 0x7f090049
+int id editText19 0x7f09004a
+int id editText2 0x7f090083
+int id editText20 0x7f09004b
+int id editText21 0x7f09004c
+int id editText3 0x7f0900a3
+int id editText4 0x7f0900a4
+int id editText5 0x7f0900a5
+int id editText6 0x7f0900a6
+int id editText7 0x7f0900a7
+int id editText8 0x7f0900ae
+int id editText9 0x7f0900af
+int id editTextAddress 0x7f090078
+int id editTextEmail 0x7f090097
+int id editTextFirstName 0x7f090076
+int id editTextLastName 0x7f090077
+int id editTextOrt 0x7f09007a
+int id editTextPLZ 0x7f090079
+int id editTextPasswort 0x7f090098
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int id edit_query 0x7f090033
 int id end 0x7f090014
 int id expand_activities_button 0x7f090022
@@ -419,7 +491,11 @@ int id icon 0x7f090026
 int id ifRoom 0x7f090018
 int id image 0x7f090023
 int id listMode 0x7f090009
+<<<<<<< HEAD
 int id listView 0x7f09006c
+=======
+int id listView 0x7f09006f
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int id listView2 0x7f090045
 int id listView3 0x7f090063
 int id list_item 0x7f090025
@@ -447,6 +523,7 @@ int id showTitle 0x7f090011
 int id split_action_bar 0x7f090007
 int id submit_area 0x7f09003c
 int id tabMode 0x7f09000b
+<<<<<<< HEAD
 int id textView 0x7f09007b
 int id textView10 0x7f090061
 int id textView11 0x7f090070
@@ -491,6 +568,63 @@ int id textViewBücherweltKundendaten 0x7f09006d
 int id textViewKundenDatenÄndern 0x7f09006e
 int id textViewPasswort 0x7f090094
 int id textViewÜberschrift 0x7f09008f
+=======
+int id textView 0x7f090080
+int id textView10 0x7f090065
+int id textView100 0x7f09009a
+int id textView101 0x7f09009b
+int id textView11 0x7f090075
+int id textView12 0x7f0900a1
+int id textView13 0x7f09004f
+int id textView14 0x7f090050
+int id textView15 0x7f090051
+int id textView16 0x7f09005a
+int id textView17 0x7f09005b
+int id textView18 0x7f090069
+int id textView19 0x7f09006a
+int id textView2 0x7f0900ad
+int id textView20 0x7f090070
+int id textView21 0x7f09006b
+int id textView22 0x7f09006c
+int id textView23 0x7f09005c
+int id textView24 0x7f09005d
+int id textView25 0x7f090046
+int id textView26 0x7f090047
+int id textView27 0x7f090052
+int id textView28 0x7f090053
+int id textView29 0x7f090054
+int id textView3 0x7f09004d
+int id textView30 0x7f09007b
+int id textView31 0x7f090081
+int id textView32 0x7f090085
+int id textView33 0x7f09007f
+int id textView34 0x7f090087
+int id textView35 0x7f09008c
+int id textView36 0x7f09008d
+int id textView37 0x7f09005e
+int id textView38 0x7f09005f
+int id textView39 0x7f090060
+int id textView4 0x7f09004e
+int id textView40 0x7f090061
+int id textView41 0x7f090062
+int id textView42 0x7f090063
+int id textView43 0x7f090055
+int id textView44 0x7f090071
+int id textView5 0x7f09003f
+int id textView6 0x7f090041
+int id textView7 0x7f090042
+int id textView8 0x7f0900a8
+int id textView9 0x7f090064
+int id textViewBenutzername 0x7f090095
+int id textViewBuecher 0x7f090058
+int id textViewBuecher2 0x7f090044
+int id textViewBücherweltAusleihkonto 0x7f090043
+int id textViewBücherweltBuchListe 0x7f090057
+int id textViewBücherweltKundendaten 0x7f090072
+int id textViewKundenDatenÄndern 0x7f090073
+int id textViewPasswort 0x7f090099
+int id textViewÜberschrift 0x7f090094
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int id title 0x7f090027
 int id up 0x7f090008
 int id useLogo 0x7f090012
@@ -535,9 +669,17 @@ int layout activity_main 0x7f040022
 int layout activity_mitarbeiter_activity 0x7f040023
 int layout activity_mitarbeiter_bearbeiten 0x7f040024
 int layout activity_mitarbeiter_login 0x7f040025
+<<<<<<< HEAD
 int layout activity_neuer_kunde 0x7f040026
 int layout activity_verwaltung 0x7f040027
 int layout support_simple_spinner_dropdown_item 0x7f040028
+=======
+int layout activity_neue_ausleihung_hinzufuegen 0x7f040026
+int layout activity_neuer_kunde 0x7f040027
+int layout activity_verwaltung 0x7f040028
+int layout buch_hinzufuegen_zur_buecherliste 0x7f040029
+int layout support_simple_spinner_dropdown_item 0x7f04002a
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int menu menu_ausgw_buch_activiy 0x7f0d0000
 int menu menu_ausleihkonto 0x7f0d0001
 int menu menu_buch 0x7f0d0002
@@ -555,9 +697,16 @@ int menu menu_main 0x7f0d000d
 int menu menu_mitarbeiter_activity 0x7f0d000e
 int menu menu_mitarbeiter_bearbeiten 0x7f0d000f
 int menu menu_mitarbeiter_login 0x7f0d0010
+<<<<<<< HEAD
 int menu menu_neuer_kunde 0x7f0d0011
 int menu menu_neues_buch 0x7f0d0012
 int menu menu_verwaltung 0x7f0d0013
+=======
+int menu menu_neue_ausleihung_hinzufuegen 0x7f0d0011
+int menu menu_neuer_kunde 0x7f0d0012
+int menu menu_neues_buch 0x7f0d0013
+int menu menu_verwaltung 0x7f0d0014
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int mipmap ic_launcher 0x7f030000
 int string Address 0x7f0b0000
 int string Ausleihen 0x7f0b0001
@@ -627,9 +776,16 @@ int string title_activity_m_mitarbeiter_liste 0x7f0b0040
 int string title_activity_mitarbeiter_activity 0x7f0b0041
 int string title_activity_mitarbeiter_bearbeiten 0x7f0b0042
 int string title_activity_mitarbeiter_login 0x7f0b0043
+<<<<<<< HEAD
 int string title_activity_neuer_kunde 0x7f0b0044
 int string title_activity_neues_buch 0x7f0b0045
 int string title_activity_verwaltung 0x7f0b0046
+=======
+int string title_activity_neue_ausleihung_hinzufuegen 0x7f0b0044
+int string title_activity_neuer_kunde 0x7f0b0045
+int string title_activity_neues_buch 0x7f0b0046
+int string title_activity_verwaltung 0x7f0b0047
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 int style AppTheme 0x7f0c0000
 int style Base_TextAppearance_AppCompat 0x7f0c0001
 int style Base_TextAppearance_AppCompat_Body1 0x7f0c0002

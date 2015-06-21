@@ -161,6 +161,15 @@ ADDED from AndroidManifest.xml:94:9
 		ADDED from AndroidManifest.xml:96:13
 	android:name
 		ADDED from AndroidManifest.xml:95:13
+<<<<<<< HEAD
+=======
+activity#de.fh_muenster.buecherwelt.buecherweltAndroid.NeueAusleihungHinzufuegen
+ADDED from AndroidManifest.xml:98:9
+	android:label
+		ADDED from AndroidManifest.xml:100:13
+	android:name
+		ADDED from AndroidManifest.xml:99:13
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:appcompat-v7:21.0.3:15:5

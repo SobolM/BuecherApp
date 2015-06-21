@@ -101,6 +101,13 @@
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.BuchDetailSicht"
             android:label="@string/title_activity_buch_detail_sicht" >
         </activity>
+<<<<<<< HEAD
+=======
+        <activity
+            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.NeueAusleihungHinzufuegen"
+            android:label="@string/title_activity_neue_ausleihung_hinzufuegen" >
+        </activity>
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
     </application>
 
 </manifest>

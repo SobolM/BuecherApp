@@ -4,19 +4,16 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.widget.EditText;
-
 
 import de.fh_muenster.buecherwelt.R;
 
-public class BuchDetailSicht extends ActionBarActivity {
+public class BuchHinzufuegenzurBuchliste extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buch_detail_sicht);
-
+        setContentView(R.layout.buch_hinzufuegen_zur_buecherliste);
 
         final EditText EditText8 = (EditText) findViewById(R.id.editText8);
         final EditText EditText9 = (EditText) findViewById(R.id.editText9);
@@ -26,11 +23,10 @@ public class BuchDetailSicht extends ActionBarActivity {
 
         final Bundle bu = this.getIntent().getExtras();
 
-        EditText8.setText(bu.getString("Titel"));
-        EditText9.setText(bu.getString("Autor"));
-        EditText10.setText(bu.getString("Erscheinungsjahr"));
-        EditText16.setText(bu.getString("Anzahl"));
-
+        EditText8.setText(bu.getString("Titel").toString());
+        EditText9.setText(bu.getString("Autor").toString());
+        EditText10.setText(bu.getString("Erscheinungsjahr").toString());
+        EditText16.setText(bu.getString("Anzahl").toString());
 
 
     }
@@ -57,5 +53,4 @@ public class BuchDetailSicht extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 }

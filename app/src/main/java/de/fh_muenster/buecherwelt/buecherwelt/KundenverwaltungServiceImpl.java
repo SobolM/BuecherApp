@@ -26,7 +26,7 @@ public class KundenverwaltungServiceImpl implements KundenverwaltungService{
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Kundenverwaltung";
+    private static final String URL = "http://192.168.2.118:8080/buecherwelt/Kundenverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.

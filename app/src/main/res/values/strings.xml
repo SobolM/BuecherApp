@@ -38,7 +38,7 @@
     <string name="Ort">Ort</string>
     <string name="C">Kunden</string>
     <string name="C_seit">Kunde seit:</string>
-    <string name="Ausleihen">Ausgeliehne Bücher:</string>
+    <string name="Ausleihen">Ausgeliehene Bücher:</string>
     <string name="fällig">Fällig am:</string>
     <string name="C_edit">Kunde bearbeiten</string>
     <string name="Bplus">Buch hinzufügen</string>
@@ -55,4 +55,9 @@
     <string name="BuchTitel">Titel</string>
     <string name="Autor">Autor</string>
     <string name="Erscheinungsjahr">Erscheinungsjahr</string>
+<<<<<<< HEAD
+=======
+    <string name="title_activity_neue_ausleihung_hinzufuegen">NeueAusleihungHinzufuegen</string>
+
+>>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
 </resources>

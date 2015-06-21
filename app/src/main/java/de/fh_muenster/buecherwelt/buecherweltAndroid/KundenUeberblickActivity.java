@@ -1,8 +1,14 @@
 package de.fh_muenster.buecherwelt.buecherweltAndroid;
 
+import android.support.v7.app.ActionBarActivity;
+
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+
+import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -22,6 +28,7 @@ import de.fh_muenster.buecherwelt.buecherwelt.BuchverwaltungServiceImpl;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Kunde;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
+
 
 
 public class KundenUeberblickActivity extends ActionBarActivity {
@@ -61,9 +68,16 @@ public class KundenUeberblickActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void neuesBuch(){
-        Intent i = new Intent(this, AusgwBuchActiviy.class);
-        startActivity(i);
+
+    public void BuchHinzufügen(View v){
+        Intent intent = new Intent(this,NeueAusleihungHinzufuegen.class);
+        startActivity(intent);
+    }
+
+    public void KundeBearbeiten(View v){
+        Intent intent = new Intent(this,NeuerKundeActivity.class);
+        startActivity(intent);
+
     }
     private class GetAusleihListeTask extends AsyncTask<Void, Void, List<Ausleihe>> {
         private Context context;

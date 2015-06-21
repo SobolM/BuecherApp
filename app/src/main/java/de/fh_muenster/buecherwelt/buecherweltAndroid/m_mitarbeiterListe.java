@@ -11,13 +11,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import de.fh_muenster.buecherwelt.R;
-import de.fh_muenster.buecherwelt.buecherwelt.Buch;
 import de.fh_muenster.buecherwelt.buecherwelt.BuecherweltApplication;
 import de.fh_muenster.buecherwelt.buecherwelt.Mitarbeiter;
 import de.fh_muenster.buecherwelt.buecherwelt.exceptions.NoSessionException;
@@ -58,7 +56,6 @@ public class m_mitarbeiterListe extends ActionBarActivity {
 
     private class GetMitarbeiterListeTask extends AsyncTask<Void, Void, List<Mitarbeiter>> {
         private Context context;
-
         //Dem Konstruktor der Klasse wird der aktuelle Kontext der Activity übergeben
         //damit auf die UI-Elemente zugegriffen werden kann und Intents gestartet werden können, usw.
         public GetMitarbeiterListeTask(Context context) {
@@ -81,7 +78,7 @@ public class m_mitarbeiterListe extends ActionBarActivity {
 
         //Vorsicht bei onPostExecute, onProgressUpdate und onPreExecute!
         //Diese drei Methoden werden im UI-Thread ausgeführt, lediglich doInBackground ist wirklich "asynchron".
-        protected void onPostExecute(List<Mitarbeiter> myList) {
+        protected void onPostExecute(final List<Mitarbeiter> myList) {
             if (myList != null) {
 
                 final ListView listView = (ListView) findViewById(R.id.listView2);
@@ -91,24 +88,30 @@ public class m_mitarbeiterListe extends ActionBarActivity {
                     adapter = new ArrayAdapter<Mitarbeiter>(context, android.R.layout.simple_list_item_1, myList);
                     listView.setAdapter(adapter);
 
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view,
-                                                    int position, long id) {
-                                Intent i = new Intent(m_mitarbeiterListe.this, Daten_Mitarbeiter.class);
-                                i.putExtra("ID",adapter.getItem(position).getId());
-                                i.putExtra("Vorname", adapter.getItem(position).getVorname());
-                                i.putExtra("Nachname",adapter.getItem(position).getNachname());
-                                i.putExtra("Ort",adapter.getItem(position).getOrt());
-                                i.putExtra("Strasse",adapter.getItem(position).getStrasse());
-                                i.putExtra("Hausnummer",adapter.getItem(position).getHausnummer());
-                                i.putExtra("Email",adapter.getItem(position).getEmail());
-                                i.putExtra("Benutzername",adapter.getItem(position).getBenutzername());
-                                i.putExtra("PLZ",adapter.getItem(position).getPlz());
+                    //OnItemClickListener zu der Liste hinzufügen. Erst jetzt ist der ArrayAdapter bekannt, der für den TransferTask erforderlich ist.
+                    //Die Referenz auf den Adapter könnte auch über andere Wege abgespeichert werden, z.B. über eine Klassenvariable etc
+                    //--> damit könnte der nachfolgende OnItemClickListener ausgelagert werden.
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view,
+                                                int position, long id) {
 
-                                startActivity(i);
-                            }
-                        });
+
+
+                            Intent i = new Intent(m_mitarbeiterListe.this, Daten_Mitarbeiter.class);
+                            i.putExtra("ID",adapter.getItem(position).getId());
+                            i.putExtra("Vorname", adapter.getItem(position).getVorname());
+                            i.putExtra("Nachname",adapter.getItem(position).getNachname());
+                            i.putExtra("Ort",adapter.getItem(position).getOrt());
+                            i.putExtra("Strasse",adapter.getItem(position).getStrasse());
+                            i.putExtra("Hausnummer",adapter.getItem(position).getHausnummer());
+                            i.putExtra("Email",adapter.getItem(position).getEmail());
+                            i.putExtra("Benutzername",adapter.getItem(position).getBenutzername());
+                            i.putExtra("PLZ",adapter.getItem(position).getPlz());
+                            startActivity(i);
+                        }
+                    });
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
