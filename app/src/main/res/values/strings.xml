@@ -55,9 +55,7 @@
     <string name="BuchTitel">Titel</string>
     <string name="Autor">Autor</string>
     <string name="Erscheinungsjahr">Erscheinungsjahr</string>
-<<<<<<< HEAD
-=======
     <string name="title_activity_neue_ausleihung_hinzufuegen">NeueAusleihungHinzufuegen</string>
 
->>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
+
 </resources>

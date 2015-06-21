@@ -30,9 +30,6 @@ public class BuchDetailSicht extends ActionBarActivity {
         EditText9.setText(bu.getString("Autor"));
         EditText10.setText(bu.getString("Erscheinungsjahr"));
         EditText16.setText(bu.getString("Anzahl"));
-
-
-
     }
 
 

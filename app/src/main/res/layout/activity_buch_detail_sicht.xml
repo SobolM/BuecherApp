@@ -6,8 +6,6 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="de.fh_muenster.buecherwelt.buecherweltAndroid.BuchDetailSicht">
 
-<<<<<<< HEAD
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,65 +39,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/editText10"
         android:hint="@string/Erscheinungsjahr"
-=======
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Bücherwelt"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Titel:"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/textView13"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Autor:"
-        android:id="@+id/textView14"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/textView13"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView15"
-        android:layout_marginTop="45dp"
-        android:layout_below="@+id/textView14"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Erscheinungsjahr:"
-        android:id="@+id/textView27"
->>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-<<<<<<< HEAD
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,37 +53,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="65dp" />
-</RelativeLayout>
-=======
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView28"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/textView27"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Anzahl:"
-        android:id="@+id/textView29"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/textView28"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView43"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/textView29"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -147,8 +61,8 @@
         android:text="Änderung Speichern"
         android:id="@+id/button14"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textView27"
-        android:layout_toEndOf="@+id/textView27" />
+        android:layout_toRightOf="@+id/textView16"
+        android:layout_toEndOf="@+id/textView16" />
 
 </RelativeLayout>
->>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
+

@@ -14,4 +14,6 @@ public interface BuchverwaltungService {
 
     public List<Buch> getAllBuecher() throws NoSessionException;
 
+    public Buch findBuchById(int id) throws NoSessionException;
+
 }

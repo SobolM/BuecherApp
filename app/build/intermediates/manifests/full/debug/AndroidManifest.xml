@@ -26,16 +26,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.Display2Activity"
-            android:label="@string/title_activity_display2" >
-        </activity>
-        <activity
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.AusgwBuchActiviy"
             android:label="@string/title_activity_ausgw_buch_activiy" >
-        </activity>
-        <activity
-            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.VerwaltungActivity"
-            android:label="@string/title_activity_verwaltung" >
         </activity>
         <activity
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.KundenActivity"
@@ -52,10 +44,6 @@
         <activity
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.BuchActivity"
             android:label="@string/title_activity_buch" >
-        </activity>
-        <activity
-            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.NeuesBuchActivity"
-            android:label="@string/title_activity_neues_buch" >
         </activity>
         <activity
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.KundeneinsichtActivity"
@@ -86,10 +74,6 @@
             android:label="@string/title_activity_kundendaten" >
         </activity>
         <activity
-            android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.buecherweltListe"
-            android:label="@string/title_activity_buecherwelt_liste" >
-        </activity>
-        <activity
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.buecherListe"
             android:label="@string/title_activity_buecher_liste" >
         </activity>
@@ -101,13 +85,10 @@
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.BuchDetailSicht"
             android:label="@string/title_activity_buch_detail_sicht" >
         </activity>
-<<<<<<< HEAD
-=======
         <activity
             android:name="de.fh_muenster.buecherwelt.buecherweltAndroid.NeueAusleihungHinzufuegen"
             android:label="@string/title_activity_neue_ausleihung_hinzufuegen" >
         </activity>
->>>>>>> c9e55f8e08c08635803f3baac2fe40c4414b3efa
     </application>
 
 </manifest>

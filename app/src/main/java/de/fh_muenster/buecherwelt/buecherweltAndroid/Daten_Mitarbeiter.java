@@ -17,7 +17,7 @@ public class Daten_Mitarbeiter extends ActionBarActivity {
         setContentView(R.layout.activity_daten__mitarbeiter);
 
         final TextView textView17 = (TextView) findViewById(R.id.textView17);
-        final TextView textView23 = (TextView)findViewById(R.id.textView23);
+        final TextView textView23 = (TextView) findViewById(R.id.textView23);
         final TextView textView24 = (TextView) findViewById(R.id.textView24);
         final TextView textView37 = (TextView) findViewById(R.id.textView37);
         final TextView textView38 = (TextView) findViewById(R.id.textView38);

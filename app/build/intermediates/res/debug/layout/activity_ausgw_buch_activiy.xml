@@ -29,10 +29,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ausgeliehen am:"
         android:id="@+id/textView6"
-        android:layout_marginTop="109dp"
-        android:layout_below="@+id/textView5"
-        android:layout_toLeftOf="@+id/button2"
-        android:layout_toStartOf="@+id/button2" />
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/editText17"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -43,5 +43,40 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText17"
+        android:hint="Buchtitel"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/textView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText22"
+
+        android:layout_below="@+id/textView6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editText17"
+        android:layout_alignEnd="@+id/editText17" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText23"
+        android:layout_below="@+id/textView7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/editText22"
+        android:layout_alignEnd="@+id/editText22" />
+
+
 </RelativeLayout>
-<!-- From: file:/home/user/workspace/Buecherwelt/app/src/main/res/layout/activity_ausgw_buch_activiy.xml -->
+<!-- From: file:/home/user/Dokumente/AndroidStudioProjects/Buecherwelt/app/src/main/res/layout/activity_ausgw_buch_activiy.xml -->

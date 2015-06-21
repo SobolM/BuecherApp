@@ -54,11 +54,11 @@ public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
             for (int j = 1; j < response.getPropertyCount(); j++) {
                 SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
                 SoapPrimitive soapAusleiheId = (SoapPrimitive) soapAccountEntry.getProperty("id");
-                SoapPrimitive soapDate = (SoapPrimitive) soapAccountEntry.getProperty("leihdatum");
+                String soapDate =  soapAccountEntry.getPrimitivePropertyAsString("leihdatum");
                 SoapPrimitive soapKundenId = (SoapPrimitive) soapAccountEntry.getProperty("kundenId");
                 SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("buchId");
 
-                Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), new Date(response.getPrimitivePropertySafelyAsString("leihdatum")), Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+                Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapDate, Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
                 result.add(ausleihe);
             }
             return result;
@@ -70,18 +70,18 @@ public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
     }
 
     @Override
-    public void neuesAusleiheHinzufuegen(int id, Date leihdatum, int kundenId, int buchId) throws NoSessionException {
+    public void neueAusleiheHinzufuegen(int id, int kundenId, int buchId) throws NoSessionException {
         Ausleihe result = null;
         String METHOD_NAME = "neuesBuchHinzufuegen";
         SoapObject response = null;
         try {
-            response = executeSoapAction(METHOD_NAME,  leihdatum, kundenId, buchId);
+            response = executeSoapAction(METHOD_NAME, kundenId, buchId);
             Log.d(TAG, response.toString());
             //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
 
             if (sessionId != 0) {
-                result = new Ausleihe(id, leihdatum, kundenId, buchId);
+                result = new Ausleihe(id,  kundenId, buchId);
             }
             else {
                 throw new NoSessionException("Please Login!");
@@ -98,24 +98,23 @@ public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
         try {
             response = executeSoapAction(METHOD_NAME, 2);
 
-            //Log.d(TAG, response.toString());
+            Log.d(TAG, response.toString());
             //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
-            if(response == null){
-                return null;
-            }else {
-                for (int j = 1; j < response.getPropertyCount(); j++) {
-                    SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
-                    SoapPrimitive soapAusleiheId = (SoapPrimitive) soapAccountEntry.getProperty("id");
-                    SoapPrimitive soapDate = (SoapPrimitive) soapAccountEntry.getProperty("leihdatum");
-                    SoapPrimitive soapKundenId = (SoapPrimitive) soapAccountEntry.getProperty("kundenId");
-                    SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("buchId");
 
-                    Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), new Date(response.getPrimitivePropertySafelyAsString("leihdatum")), Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+
+                    SoapPrimitive soapAusleiheId = (SoapPrimitive) response.getProperty("id");
+                    String soapDate = response.getPrimitivePropertyAsString("leihdatum");
+
+                    SoapPrimitive soapKundenId = (SoapPrimitive) response.getProperty("kundenId");
+                    SoapPrimitive soapBuchId = (SoapPrimitive) response.getProperty("buchId");
+
+                    Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapDate,Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+
                     result.add(ausleihe);
-                }
+
                 return result;
-            }
+
         }
         catch (SoapFault e) {
             throw new NoSessionException(e.getMessage());

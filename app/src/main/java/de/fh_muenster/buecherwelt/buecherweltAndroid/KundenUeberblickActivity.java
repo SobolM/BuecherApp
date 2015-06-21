@@ -119,8 +119,13 @@ public class KundenUeberblickActivity extends ActionBarActivity {
                         public void onItemClick(AdapterView<?> parent, View view,
                                                 int position, long id) {
 
-                            Intent i = new Intent(view.getContext(), AusgwBuchActiviy.class);
+                            Intent i = new Intent(KundenUeberblickActivity.this, AusgwBuchActiviy.class);
+                            i.putExtra("Id", adapter.getItem(position).getId());
+                            i.putExtra("BuchID", adapter.getItem(position).getBuchId());
+
                             startActivity(i);
+
+
                         }
                     });
                 } catch (Exception e) {

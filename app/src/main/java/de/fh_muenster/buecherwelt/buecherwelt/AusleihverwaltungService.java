@@ -12,7 +12,7 @@ public interface AusleihverwaltungService {
 
     public List<Ausleihe> getAllAusleihen()throws NoSessionException;
 
-    public void neuesAusleiheHinzufuegen(int id, Date leihdatum, int kundenId, int buchId) throws NoSessionException;
+    public void neueAusleiheHinzufuegen(int id, int kundenId, int buchId) throws NoSessionException;
 
     public List<Ausleihe> getAusleihenByKundenId(int id) throws NoSessionException;
 }

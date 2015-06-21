@@ -27,7 +27,7 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.2.118:8080/buecherwelt/Buchverwaltung";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Buchverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.
@@ -61,6 +61,32 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
         }
     }
 
+    @Override
+    public Buch findBuchById(int id) throws NoSessionException {
+        Buch result = null;
+        String METHOD_NAME = "buchSuchen";
+        SoapObject response = null;
+        try {
+            response = executeSoapAction(METHOD_NAME, id);
+
+            Log.d(TAG, response.toString());
+            //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
+            //this.sessionId = Integer.valueOf(sid.toString());
+
+                SoapPrimitive soapBuchId = (SoapPrimitive) response.getProperty("id");
+                SoapPrimitive soapTitel = (SoapPrimitive) response.getProperty("titel");
+                SoapPrimitive soapAutor = (SoapPrimitive) response.getProperty("autor");
+                SoapPrimitive soapJahr = (SoapPrimitive) response.getProperty("erscheinungsjahr");
+                SoapPrimitive soapAnzahl = (SoapPrimitive) response.getProperty("anzahl");
+                Buch buch = new Buch(Integer.valueOf(soapBuchId.toString()), soapTitel.toString(), soapAutor.toString(), Integer.valueOf(soapJahr.toString()), Integer.valueOf(soapAnzahl.toString()));
+
+            return buch;
+        }
+        catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
+    }
+
 
 
     @Override
@@ -77,12 +103,12 @@ public class BuchverwaltungServiceImpl implements BuchverwaltungService{
 
 
                 for (int j = 1; j < response.getPropertyCount(); j++) {
-                    SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
-                    SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("id");
-                    SoapPrimitive soapTitel = (SoapPrimitive) soapAccountEntry.getProperty("titel");
-                    SoapPrimitive soapAutor = (SoapPrimitive) soapAccountEntry.getProperty("autor");
-                    SoapPrimitive soapJahr = (SoapPrimitive) soapAccountEntry.getProperty("erscheinungsjahr");
-                    SoapPrimitive soapAnzahl = (SoapPrimitive) soapAccountEntry.getProperty("anzahl");
+                    SoapObject soapBuchEntry = (SoapObject) response.getProperty(j);
+                    SoapPrimitive soapBuchId = (SoapPrimitive) soapBuchEntry.getProperty("id");
+                    SoapPrimitive soapTitel = (SoapPrimitive) soapBuchEntry.getProperty("titel");
+                    SoapPrimitive soapAutor = (SoapPrimitive) soapBuchEntry.getProperty("autor");
+                    SoapPrimitive soapJahr = (SoapPrimitive) soapBuchEntry.getProperty("erscheinungsjahr");
+                    SoapPrimitive soapAnzahl = (SoapPrimitive) soapBuchEntry.getProperty("anzahl");
                     Buch buch = new Buch(Integer.valueOf(soapBuchId.toString()), soapTitel.toString(), soapAutor.toString(), Integer.valueOf(soapJahr.toString()), Integer.valueOf(soapAnzahl.toString()));
                     result.add(buch);
 

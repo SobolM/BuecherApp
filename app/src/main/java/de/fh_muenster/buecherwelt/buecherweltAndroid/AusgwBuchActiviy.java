@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import de.fh_muenster.buecherwelt.R;
 
@@ -16,6 +17,16 @@ public class AusgwBuchActiviy extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ausgw_buch_activiy);
+
+        final EditText EditText17 = (EditText) findViewById(R.id.editText17);
+        final EditText ausleihdatum = (EditText) findViewById(R.id.editText22);
+        final EditText rueckgabedatum = (EditText) findViewById(R.id.editText23);
+
+        final Bundle bu = this.getIntent().getExtras();
+
+        EditText17.setText(bu.getString("BuchID"));
+        ausleihdatum.setText(bu.getString("leihdatum"));
+        rueckgabedatum.setText(bu.getString("Anzahl"));
 
     }
 
@@ -46,4 +57,6 @@ public class AusgwBuchActiviy extends ActionBarActivity {
         Intent intent = new Intent(this, Ausleihkonto.class);
         startActivity(intent);
     }
+
+
 }

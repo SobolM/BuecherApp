@@ -28,7 +28,7 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
      */
     private static final String NAMESPACE = "http://webservices.bw.de/";
 
-    private static final String URL = "http://192.168.2.118:8080/buecherwelt/Mitarbeiterverwaltung";
+    private static final String URL = "http://192.168.0.15:8080/buecherwelt/Mitarbeiterverwaltung";
 
     /**
      * TAG contains the class name and is used for logging.
@@ -91,33 +91,30 @@ public class MitarbeiterverwaltungServiceImpl implements MitarbeiterverwaltungSe
         String METHOD_NAME = "getAllMitarbeiter";
         SoapObject response = null;
         try {
-
             response = executeSoapAction(METHOD_NAME);
             Log.d(TAG, response.toString());
-            //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
-            //this.sessionId = Integer.valueOf(sid.toString());
-
-            for (int j = 1; j < response.getPropertyCount(); j++) {
-                //SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
-
-                SoapPrimitive test = (SoapPrimitive) response.getProperty("id");
-                SoapPrimitive testhaus = (SoapPrimitive) response.getProperty("hausnummer");
-                int id = Integer.valueOf(test.toString());
-                String vorname = response.getPrimitivePropertySafelyAsString("vorname");
-                String nachname = response.getPrimitivePropertySafelyAsString("nachname");
-                String plz = response.getPrimitivePropertySafelyAsString("plz");
-                String ort = response.getPrimitivePropertySafelyAsString("ort");
-                String strasse = response.getPrimitivePropertySafelyAsString("strasse");
-                int hausnummer = Integer.valueOf(testhaus.toString());
-                String email = response.getPrimitivePropertySafelyAsString("email");
-                String benutzername = response.getPrimitivePropertySafelyAsString("benutzername");
-                String passwort = response.getPrimitivePropertySafelyAsString("passwort");
-                Mitarbeiter mitarbeiter = new Mitarbeiter(id, vorname, nachname, plz, ort, strasse, hausnummer, email, benutzername, passwort);
-
+                SoapPrimitive soapMaId = (SoapPrimitive) response.getProperty("id");
+                SoapPrimitive soapMaVorname = (SoapPrimitive) response.getProperty("vorname");
+                SoapPrimitive soapMaNachname = (SoapPrimitive) response.getProperty("nachname");
+                SoapPrimitive soapMaPlz = (SoapPrimitive) response.getProperty("plz");
+                SoapPrimitive soapMaOrt = (SoapPrimitive) response.getProperty("ort");
+                SoapPrimitive soapMaStrasse = (SoapPrimitive) response.getProperty("strasse");
+                SoapPrimitive soapMaHausNr = (SoapPrimitive) response.getProperty("hausnummer");
+                SoapPrimitive soapEmail = (SoapPrimitive) response.getProperty("email");
+                SoapPrimitive soapBenutzername = (SoapPrimitive) response.getProperty("benutzername");
+                SoapPrimitive soapMaPasswort = (SoapPrimitive) response.getProperty("passwort");
+                Mitarbeiter mitarbeiter =
+                        new Mitarbeiter(Integer.valueOf(soapMaId.toString()),
+                                        soapMaVorname.toString(),
+                                        soapMaNachname.toString(),
+                                        soapMaPlz.toString(),
+                                        soapMaOrt.toString(),
+                                        soapMaStrasse.toString(),
+                                        Integer.valueOf(soapMaHausNr.toString()),
+                                        soapEmail.toString(),
+                                        soapBenutzername.toString(),
+                                        soapMaPasswort.toString());
                 result.add(mitarbeiter);
-            }
-
-
             return result;
         }
         catch (SoapFault e) {

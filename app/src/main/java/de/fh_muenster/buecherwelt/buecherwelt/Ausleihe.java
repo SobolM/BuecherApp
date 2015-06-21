@@ -9,17 +9,25 @@ public class Ausleihe {
 
     private int id;
 
-    private Date leihdatum;
+    private String leihdatum;
     private int kundenId;
     private int buchId;
 
 
-    public Ausleihe(int id, Date leihdatum, int kundenId, int buchId) {
+    public Ausleihe(int id, String leihdatum, int kundenId, int buchId) {
         this.id = id;
         this.leihdatum = leihdatum;
         this.kundenId = kundenId;
         this.buchId = buchId;
     }
+
+    public Ausleihe(int id, int kundenId, int buchId) {
+        this.id = id;
+
+        this.kundenId = kundenId;
+        this.buchId = buchId;
+    }
+
 
     public int getId() {
         return this.id;
@@ -29,7 +37,7 @@ public class Ausleihe {
         this.id = id;
     }
 
-    public Date getLeihdatum() {
+    public String getLeihdatum() {
         return this.leihdatum;
     }
 
@@ -41,7 +49,7 @@ public class Ausleihe {
         return this.buchId;
     }
 
-    public void setLeihdatum(Date leihdatum) {
+    public void setLeihdatum(String leihdatum) {
         this.leihdatum = leihdatum;
     }
 
