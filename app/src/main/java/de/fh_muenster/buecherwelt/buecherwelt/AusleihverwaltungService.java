@@ -15,4 +15,6 @@ public interface AusleihverwaltungService {
     public void neueAusleiheHinzufuegen(int id, int kundenId, int buchId) throws NoSessionException;
 
     public List<Ausleihe> getAusleihenByKundenId(int id) throws NoSessionException;
+
+    public int leihfristVerlaengern(int ausleiheId) throws NoSessionException;
 }

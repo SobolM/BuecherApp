@@ -55,10 +55,11 @@ public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
                 SoapObject soapAccountEntry = (SoapObject) response.getProperty(j);
                 SoapPrimitive soapAusleiheId = (SoapPrimitive) soapAccountEntry.getProperty("id");
                 String soapDate =  soapAccountEntry.getPrimitivePropertyAsString("leihdatum");
+                String soapRueckgabedatum = response.getPrimitivePropertyAsString("rueckgabedatum");
                 SoapPrimitive soapKundenId = (SoapPrimitive) soapAccountEntry.getProperty("kundenId");
                 SoapPrimitive soapBuchId = (SoapPrimitive) soapAccountEntry.getProperty("buchId");
 
-                Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapDate, Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+                Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapDate, soapRueckgabedatum, Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
                 result.add(ausleihe);
             }
             return result;
@@ -98,18 +99,18 @@ public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
         try {
             response = executeSoapAction(METHOD_NAME, 2);
 
-            Log.d(TAG, response.toString());
+            //Log.d(TAG, response.toString());
             //SoapPrimitive sid = (SoapPrimitive) response.getProperty("id");
             //this.sessionId = Integer.valueOf(sid.toString());
 
 
                     SoapPrimitive soapAusleiheId = (SoapPrimitive) response.getProperty("id");
-                    String soapDate = response.getPrimitivePropertyAsString("leihdatum");
-
+                    String soapLeihdatum = response.getPropertySafelyAsString("leihdatum");
+                    String soapRueckgabedatum = response.getPropertySafelyAsString("rueckgabedatum");
                     SoapPrimitive soapKundenId = (SoapPrimitive) response.getProperty("kundenId");
                     SoapPrimitive soapBuchId = (SoapPrimitive) response.getProperty("buchId");
 
-                    Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapDate,Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+                    Ausleihe ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapLeihdatum, soapRueckgabedatum, Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
 
                     result.add(ausleihe);
 
@@ -120,6 +121,38 @@ public class AusleihverwaltungServiceImpl implements  AusleihverwaltungService{
             throw new NoSessionException(e.getMessage());
         }
 
+    }
+    @Override
+    public int leihfristVerlaengern(int ausleiheId) throws NoSessionException{
+        Ausleihe ausleihe = null;
+        String METHOD_NAME = "leihfristVerlaengern";
+        //String METHOD_NAME2 = "findAusleiheById";
+
+        SoapObject response2 = null;
+
+
+        try {
+
+            executeSoapAction(METHOD_NAME, ausleiheId);
+            //Log.d(TAG, response.toString());
+
+                //response2 = executeSoapAction(METHOD_NAME2, ausleiheId);
+
+                /*SoapPrimitive soapAusleiheId = (SoapPrimitive) response2.getProperty("id");
+                String soapLeihdatum = response2.getPrimitivePropertyAsString("leihdatum");
+                String soapRueckgabedatum = response2.getPrimitivePropertyAsString("rueckgabedatum");
+                SoapPrimitive soapKundenId = (SoapPrimitive) response2.getProperty("kundenId");
+                SoapPrimitive soapBuchId = (SoapPrimitive) response2.getProperty("buchId");
+
+                ausleihe = new Ausleihe(Integer.valueOf(soapAusleiheId.toString()), soapLeihdatum, soapRueckgabedatum, Integer.valueOf(soapKundenId.toString()), Integer.valueOf(soapBuchId.toString()));
+
+                return ausleihe;*/
+            return 1;
+
+        }
+        catch (SoapFault e) {
+            throw new NoSessionException(e.getMessage());
+        }
     }
 
 

@@ -56,6 +56,7 @@
     <string name="Autor">Autor</string>
     <string name="Erscheinungsjahr">Erscheinungsjahr</string>
     <string name="title_activity_neue_ausleihung_hinzufuegen">NeueAusleihungHinzufuegen</string>
+    <string name="BuchId">buchId</string>
 
 
 </resources>

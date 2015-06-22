@@ -10,13 +10,15 @@ public class Ausleihe {
     private int id;
 
     private String leihdatum;
+    private String rueckgabedatum;
     private int kundenId;
     private int buchId;
 
 
-    public Ausleihe(int id, String leihdatum, int kundenId, int buchId) {
+    public Ausleihe(int id, String leihdatum, String rueckgabedatum, int kundenId, int buchId) {
         this.id = id;
         this.leihdatum = leihdatum;
+        this.rueckgabedatum = rueckgabedatum;
         this.kundenId = kundenId;
         this.buchId = buchId;
     }
@@ -59,5 +61,13 @@ public class Ausleihe {
 
     public void setBuchId(int buchId) {
         this.buchId = buchId;
+    }
+
+    public String getRueckgabedatum() {
+        return rueckgabedatum;
+    }
+
+    public void setRueckgabedatum(String rueckgabedatum) {
+        this.rueckgabedatum = rueckgabedatum;
     }
 }

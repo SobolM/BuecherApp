@@ -152,6 +152,7 @@
     <string name="Benutzername">Benutzername</string>
     <string name="Books">Bücher</string>
     <string name="Bplus">Buch hinzufügen</string>
+    <string name="BuchId">buchId</string>
     <string name="BuchTitel">Titel</string>
     <string name="Button_Login">Login</string>
     <string name="Bücherwelt">Bücherwelt</string>

@@ -97,7 +97,13 @@ public class Ausleihkonto extends ActionBarActivity {
                         public void onItemClick(AdapterView<?> parent, View view,
                                                 int position, long id) {
 
-                            Intent i = new Intent(view.getContext(), AusgwBuchActiviy.class);
+                            Intent i = new Intent(Ausleihkonto.this, AusgwBuchActiviy.class);
+                            i.putExtra("id", adapter.getItem(position).getId());
+                            i.putExtra("buchId", adapter.getItem(position).getBuchId());
+                            i.putExtra("kundenId", adapter.getItem(position).getKundenId());
+                            i.putExtra("leihdatum",adapter.getItem(position).getLeihdatum());
+                            i.putExtra("rueckgabedatum",adapter.getItem(position).getRueckgabedatum());
+
                             startActivity(i);
                         }
                     });
